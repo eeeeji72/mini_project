@@ -4,13 +4,14 @@ public class Run {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
- seyoung
-//dkdk
+
 		System.out.println("test");
 
 		System.out.println("JAVA!?");
 		System.out.println("TEST!");
- master
+		System.out.println("TEST2!!");
+		System.out.println("아아아아");
+
 	}
 
 }
