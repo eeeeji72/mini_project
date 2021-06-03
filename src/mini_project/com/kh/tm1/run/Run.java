@@ -10,6 +10,7 @@ public class Run {
 		System.out.println("JAVA!?");
 		System.out.println("TEST!");
 		System.out.println("TEST2!!");
+		System.out.println("아아아아");
 
 	}
 
