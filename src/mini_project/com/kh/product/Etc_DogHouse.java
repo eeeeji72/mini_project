@@ -626,6 +626,4 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		public void actionPerformed(ActionEvent e) {
 		}
 	};
-	
-	
 }
