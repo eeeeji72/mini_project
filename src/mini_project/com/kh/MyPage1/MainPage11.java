@@ -69,7 +69,7 @@ public class MainPage11 extends JFrame {
 				new Page11();
 				System.out.println("[ -> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
-
+//
 			}
 		});
 		btnNewButton_2.setBounds(783, 91, 110, 37);
