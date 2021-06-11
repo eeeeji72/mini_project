@@ -660,7 +660,7 @@ public class Page11 extends JFrame {
 		lblNewLabel_1.setBounds(31, 185, 457, 555);
 		Mypage.add(lblNewLabel_1);
 	}
-
+//;
 	public static void main(String[] args) {
 
 		new Page11();

@@ -37,7 +37,7 @@ public class MainPage11 extends JFrame {
 	 * /** Create the frame.
 	 */
 	public MainPage11() {
-
+//;
 		/*
 		 * setTitle("댕숲"); try { setIconImage(ImageIO.read(new
 		 * File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
