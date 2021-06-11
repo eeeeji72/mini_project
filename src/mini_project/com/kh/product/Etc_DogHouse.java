@@ -16,7 +16,6 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -35,7 +34,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import mini_project.com.kh.product.ProductList_Etc;
 
 public class Etc_DogHouse extends JFrame implements MouseListener {
 	private JTable table;
@@ -501,6 +499,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 					DefaultTableModel m = (DefaultTableModel)table.getModel();
 					if(hsize.getSelectedItem().toString().equals("소형견 용")) {
 						m.addRow(new Object[]{hsize.getSelectedItem().toString(),count, productprice[0]});
+						
 						//pay_list.add(new Object[]{hsize.getSelectedItem().toString(), count, productprice[0]});
 						//System.out.println(pay_list.toString());
 					}else if(hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
@@ -627,4 +626,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		public void actionPerformed(ActionEvent e) {
 		}
 	};
+	
+	
 }
