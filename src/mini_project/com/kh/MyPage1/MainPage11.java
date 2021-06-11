@@ -18,10 +18,10 @@ import java.awt.event.ActionEvent;
 import mini_project.com.kh.MyPage1.Page11;
 
 public class MainPage11 extends JFrame {
-
+//
 	private Image img;
 	private JPanel contentPane;
-
+//
 	/**
 	 * Launch the application.
 	 */
@@ -66,7 +66,7 @@ public class MainPage11 extends JFrame {
 		JButton btnNewButton_2 = new JButton("마이페이지");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Page();
+				new Page11();
 				System.out.println("[ -> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
 
@@ -106,7 +106,7 @@ public class MainPage11 extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new MainPage();
+		new MainPage11();
 	}
 
 }

@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class Page11 extends JFrame {
-
+//
 	private JPanel Mypage;
 
 	/**
@@ -663,6 +663,6 @@ public class Page11 extends JFrame {
 
 	public static void main(String[] args) {
 
-		new Page();
+		new Page11();
 	}
 }
