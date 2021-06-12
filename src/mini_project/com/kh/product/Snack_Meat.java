@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -36,27 +37,26 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-
-public class Etc_DogHouse extends JFrame implements MouseListener {
+public class Snack_Meat extends JFrame implements MouseListener {
 	private JTable table;
 	private static int HEADER_HEIGHT = 40; // table header 높이
 
 	private File dir;
 	private String filePath;
 	ArrayList<String> pFiles = new ArrayList<String>();
-	
+
 	String ptitle;
 	String pprice;
 	String pinfo;
-	
+
 	void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
 	
-	public Etc_DogHouse() {
-
+	public Snack_Meat() {
+		// TODO Auto-generated constructor stub.
 		// File Open
-        File wFile = new File("PC1000.txt");
+        File wFile = new File("PA0000.txt");
        
         // File Reader를 위한 객체 생성
         FileReader frd = null;
@@ -69,36 +69,39 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
         String rLine = null;
         int lineNum = 0;
         boolean hasMore = true;
-		
+     
         try {
-            frd = new FileReader(wFile);
-            brd = new BufferedReader(frd);                                      
-            while (hasMore) {
-                   if((rLine = brd.readLine())!= null){
-                        // ArrayList에 읽은 라인 추가
-                       lineList.add(rLine);
-                       lineNum++;
-                       hasMore = true;
-                   } else
-                      hasMore = false;                       
-            }
-            frd.close();
-            brd.close();
-      } catch (IOException e) {
-            e.printStackTrace();
-      }           
+              frd = new FileReader(wFile);
+              brd = new BufferedReader(frd);                                      
 
-      // 라인단위 출력(for loop)
-      lineNum = lineList.size();
-      
-      ptitle = lineList.get(2);
-      System.out.println("ptitle : " + ptitle);
-      pprice = lineList.get(3);
-      System.out.println("pprice : " + pprice);
-      pinfo = lineList.get(5);
-      System.out.println("pinfo : " + pinfo);
+              while (hasMore) {
+                     if((rLine = brd.readLine())!= null){
+                          // ArrayList에 읽은 라인 추가
+                         lineList.add(rLine);
+                         lineNum++;
+                         hasMore = true;
+                     } else
+                        hasMore = false;                       
+              }
+              frd.close();
+              brd.close();
+        } catch (IOException e) {
+              e.printStackTrace();
+        }           
+
+       
+
+        // 라인단위 출력(for loop)
+        lineNum = lineList.size();
+
+        ptitle = lineList.get(2);
+        System.out.println("ptitle : " + ptitle);
+        pprice = lineList.get(3);
+        System.out.println("pprice : " + pprice);
+        pinfo = lineList.get(5);
+        System.out.println("pinfo : " + pinfo);
 		
-		JMenuBar menuBar = new JMenuBar(); //메뉴바 생성
+        JMenuBar menuBar = new JMenuBar(); //메뉴바 생성
 
 		 //메뉴 생성
 		JMenu categ = new JMenu("카테고리");
@@ -131,22 +134,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 			}
 		});		
 		categ.addSeparator();
-		
-		/*
-		menuItem = new JMenuItem("베스트 상품");
-		menuItem.addActionListener(menuItemListener);
-		categ.add(menuItem);
-		//클릭시 이동
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new ProductList_Best();
-				System.out.println("[ -> 베스트 카테고리]");
-				setVisible(false); // 창 안보이게 하기
-			}
-		});		
-*/
-		
+
 		menuItem = new JMenuItem("장난감");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
@@ -244,7 +232,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		
 		//JFrame에 메뉴바 설정
 		setJMenuBar(menuBar);
-		
+
 		// 이름, 이미지
 		setTitle("댕숲");
 		try {
@@ -262,7 +250,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		panel_5.setBounds(0, 0, 900, 900);
 		GridBagLayout gbl_panel_5 = new GridBagLayout();
-		gbl_panel_5.columnWidths = new int[] { 39, 275, 350, 0 };
+		gbl_panel_5.columnWidths = new int[] { 47, 275, 350, 0 };
 		gbl_panel_5.rowHeights = new int[] { 383, 0 };
 		gbl_panel_5.columnWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		gbl_panel_5.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
@@ -277,15 +265,15 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		gbc_panel_7.gridy = 0;
 		panel_5.add(panel_7, gbc_panel_7);
 		GridBagLayout gbl_panel_7 = new GridBagLayout();
-		gbl_panel_7.columnWidths = new int[] { 0, 535, 37, 0 };
-		gbl_panel_7.rowHeights = new int[] { 100, 586, 0, 0 };
-		gbl_panel_7.columnWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_7.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panel_7.columnWidths = new int[] { 0, 535, 88, 0 };
+		gbl_panel_7.rowHeights = new int[] { 77, 646, 0, 0 };
+		gbl_panel_7.columnWeights = new double[] { 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panel_7.rowWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		panel_7.setLayout(gbl_panel_7);
 
 		// 사진
 		JPanel panel_8 = new JPanel() {
-			Image background = new ImageIcon("img/doghouse.png").getImage();
+			Image background = new ImageIcon("img/meat.png").getImage();
 
 			public void paint(Graphics g) {// 그리는 함수
 				Dimension d = getSize();
@@ -309,12 +297,12 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		panel_5.add(panel_6, gbc_panel_6);
 		GridBagLayout gbl_panel_6 = new GridBagLayout();
 		gbl_panel_6.columnWidths = new int[] { 0, 217, 89, 68, 0 };
-		gbl_panel_6.rowHeights = new int[] { 72, 39, 36, 262, 50, 0, 78, 132, 0, 0 };
+		gbl_panel_6.rowHeights = new int[] { 72, 39, 120, 200, 50, 0, 78, 132, 0, 0 };
 		gbl_panel_6.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_6.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panel_6.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel_6.setLayout(gbl_panel_6);
 
-		// 상품명
+		// 상품명------------------------------------------------------------
 		JLabel lblNewLabel = new JLabel("["+lineList.get(1)+"] "+ptitle);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 2;
@@ -326,7 +314,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		Font product = new Font("NotoSansCJKkr", Font.PLAIN, 30);
 		lblNewLabel.setFont(product);
 
-		// 상품 가격
+		// 상품 가격------------------------------------------------------------
 		JLabel lblNewLabel_1 = new JLabel(pprice + "원");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.gridwidth = 2;
@@ -337,7 +325,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		// 폰트, 크기 적용
 		lblNewLabel_1.setFont(product);
 
-		// 상품 설명
+		// 상품 설명------------------------------------------------------------
 		JLabel lblNewLabel_2 = new JLabel(pinfo);
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.gridwidth = 2;
@@ -350,9 +338,9 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		panel_6.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-		// 제품 선택-콤보박스
-		String dsize[] = { "소형견 용", "중형견 용 (+5000원)", "대형견 용 (+10000원)" };
-		int [] productprice = {21000, 26000, 31000};
+		// 제품 선택-콤보박스------------------------------------------------------------
+		String dsize[] = { "1개", "2개", "3개" };
+		int[] productprice = { 60000, 120000, 180000 };
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -395,7 +383,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		DefaultTableModel model = new DefaultTableModel(title, 0);
 		JTable table = new JTable(model);
 		ArrayList pay_list = new ArrayList(); // 결제 금액 관련 리스트 선언
-		
+
 		table.setRowHeight(40);
 		table.setPreferredScrollableViewportSize(new Dimension(500, 50));
 		table.setFillsViewportHeight(true);
@@ -419,7 +407,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		gbc_panel_2.gridx = 1;
 		gbc_panel_2.gridy = 8;
 		panel_6.add(panel_2, gbc_panel_2);
-		
 
 		// 선택 삭제 버튼
 		JButton del_btn = new JButton("선택 삭제");
@@ -428,7 +415,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		panel_2.add(del_btn);
 		// 폰트, 크기 적용
 		del_btn.setFont(btn);
-		
+
 		del_btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -441,20 +428,23 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 				}
 				model.removeRow(rowIndex); // 해당 테이블 행 삭제
 				table.getSelectedRow();
-				
-				//pay_list.remove(rowIndex); // 결제 금액 리스트에서도 삭제 실시
+
+				// pay_list.remove(rowIndex); // 결제 금액 리스트에서도 삭제 실시
 			}
 		});
-		
+
 		// 총 금액 출력 영역
 		JLabel totalprice = new JLabel("");
 		panel_2.add(totalprice);
 		// 폰트, 크기 적용
 		totalprice.setFont(btn);
 
+		JButton pay_btn = new JButton("결제하기");
+		pay_btn.setBackground(new Color(0, 153, 255));
+		pay_btn.setForeground(Color.WHITE);
+		panel_2.add(pay_btn);
+		pay_btn.setFont(btn);
 		
-		
-
 		// 장바구니 버튼
 		JButton btnNewButton = new JButton("장바구니 담기");
 		btnNewButton.setBackground(new Color(0, 153, 255));
@@ -467,13 +457,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		// 폰트, 크기 적용
 		btnNewButton.setFont(btn);
 
-		// 결제 영역
-		JButton pay_btn = new JButton("결제하기");
-		pay_btn.setBackground(new Color(0, 153, 255));
-		pay_btn.setForeground(Color.WHITE);
-		panel_2.add(pay_btn);
-		pay_btn.setFont(btn);
-
 		ActionListener action = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -482,9 +465,9 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 					JButton goCart = (JButton) e.getSource();
 					DefaultTableModel m = (DefaultTableModel) table.getModel();
-					if (hsize.getSelectedItem().toString().equals("소형견 용")) {
+					if (hsize.getSelectedItem().toString().equals("1개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[0] });
-					} else if (hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
+					} else if (hsize.getSelectedItem().toString().equals("2개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[1] });
 					} else {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
@@ -494,12 +477,12 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 					String info[] = new String[3]; //한행 (row) 에 저장할 데이터 모음
 					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
 					info[1] = "1";				
-					if(hsize.getSelectedItem().toString().equals("소형견 용")) {
-						info[2] = "21000";
-					}else if(hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
-						info[2] = "26000";
+					if(hsize.getSelectedItem().toString().equals("1개")) {
+						info[2] = "60000";
+					}else if(hsize.getSelectedItem().toString().equals("2개")) {
+						info[2] = "120000";
 					}else {
-						info[2] = "31000";
+						info[2] = "180000";
 					}
 					pay_list.add(hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원"); //결제 금액 리스트에 추가
 					
@@ -557,13 +540,12 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		btnNewButton.addActionListener(action);
 		del_btn.addActionListener(action);
 		pay_btn.addActionListener(action);
-		
-		//마우스 클릭 이벤트
+
+		// 마우스 클릭 이벤트
 		panel_2.addMouseListener(this);
 		panel_5.addMouseListener(this);
 		panel_7.addMouseListener(this);
 		panel_6.addMouseListener(this);
-
 
 		// panel 색상 적용
 		panel_5.setBackground(new Color(160, 242, 196));
@@ -571,13 +553,13 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		panel_6.setBackground(new Color(160, 242, 196));
 		panel_2.setBackground(new Color(160, 242, 196));
 
-		//크기 설정, 보이게, 크기 고정
+		// 크기 설정, 보이게, 크기 고정
 		setSize(1350, 900);
 		setVisible(true);
 		setResizable(false);
 	}
 
-	//마우스 이벤트
+	// 마우스 이벤트
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -585,10 +567,10 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//눌렀을 때 이전 화면으로 전환
+		// 눌렀을 때 이전 화면으로 전환
 		if (e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-			System.out.println("[ -> 기타 카테고리]");
-			new ProductList_Etc();
+			System.out.println("[ -> 간식 카테고리]");
+			new ProductList_Snack();
 			setVisible(false);
 		}
 	}
@@ -610,9 +592,22 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-	ActionListener menuItemListener = new ActionListener() {		
+
+	ActionListener menuItemListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		}
 	};
+
+	static List<String> Gum(String name) throws IOException {
+
+		List<String> retStr = new ArrayList<String>();
+		BufferedReader in = new BufferedReader(new FileReader(name));
+		String s;
+		while ((s = in.readLine()) != null) {
+			retStr.add(s);
+		}
+		in.close();
+		return retStr;
+	}
 }
