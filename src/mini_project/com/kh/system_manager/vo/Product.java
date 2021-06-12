@@ -113,13 +113,13 @@ public class Product {
 		
 		StringBuilder info = new StringBuilder();
 		
-		info.append(pCode+"\s");
-		info.append(pBrand+"\s");
-		info.append(pName+"\s");
-		info.append(pPrice+"\s");
-		info.append(pType+"\s");
-		info.append(pInfo+"\s");
-		info.append(pImage+"\s");
+		info.append("상품 코드 : " + pCode+"\s");
+		info.append("/ 브랜드 : " + pBrand+"\s");
+		info.append("/ 상품명 :"+pName+"\s");
+		info.append("/ 가격 :" +pPrice+"\s");
+		info.append("/ 종류 :" +pType+"\s");
+		info.append("/ 상품 설명 :" +pInfo+"\s");
+		info.append("/ 이미지 경로 :" +pImage+"\s");
 		
 		return info.toString();
 	}

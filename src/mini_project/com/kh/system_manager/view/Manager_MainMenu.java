@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import mini_project.com.kh.product.ProductMain;
 import mini_project.com.kh.system_manager.dao.ProductManagement;
+import mini_project.com.kh.system_manager.dao.UserManagement;
 
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -158,10 +159,15 @@ class selectWindow extends JFrame implements ActionListener,WindowListener {
 	selectWindow() {
 		setTitle("실행할 기능 선택");
 		setBackground(new Color(160, 242, 196));
-		bUService = new JButton("userService");
-		bUManagement = new JButton("userManagement");
-		bUService.setSize(100,100);
-		bUManagement.setSize(100,100);
+		
+
+		ImageIcon userImg = new ImageIcon("img/userIcon");
+		ImageIcon serImg = new ImageIcon("img/serviceIcon");
+		bUService = new JButton("userService",serImg);
+		bUManagement = new JButton("userManagement",userImg);
+		bUService.setSize(65,65);
+		bUManagement.setSize(65,65);
+		
 		
 		bUService.setHorizontalAlignment(SwingConstants.CENTER);
 		bUManagement.setHorizontalAlignment(SwingConstants.CENTER);
@@ -178,7 +184,7 @@ class selectWindow extends JFrame implements ActionListener,WindowListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				new Manager_UserManagerMent();
+				new UserManagement();
 				dispose();
 			}});
 		
