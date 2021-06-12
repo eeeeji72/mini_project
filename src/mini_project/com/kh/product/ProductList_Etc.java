@@ -56,25 +56,25 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new ProductMain();
-				System.out.println("[ 기타 -> 상품 홈]");
+				System.out.println("[ -> 상품 홈]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});		
 		categ.addSeparator();
 		
-		menuItem = new JMenuItem("베스트 상품");
+		menuItem = new JMenuItem("장난감");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
 		//클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ProductList_Best();
-				System.out.println("[ 기타 -> 베스트 카테고리]");
+				new ProductList_Toy();
+				System.out.println("[ -> 장난감 카테고리]");
 				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-
+		});	
+		
 		menuItem = new JMenuItem("의류");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
@@ -83,20 +83,20 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new ProductList_Clo();
-			System.out.println("[ 기타 -> 의류 카테고리]");
+			System.out.println("[ -> 의류 카테고리]");
 			setVisible(false); // 창 안보이게 하기
 			}
 		});		
 				
-		menuItem = new JMenuItem("장난감&간식");
+		menuItem = new JMenuItem("간식");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
 		//클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new ProductList_ToySnack();
-			System.out.println("[ 기타 -> 장난감&간식 카테고리]");
+			new ProductList_Snack();
+			System.out.println("[ -> 간식 카테고리]");
 			setVisible(false); // 창 안보이게 하기
 			}
 		});		
@@ -110,7 +110,7 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new ProductList_Acc();
-			System.out.println("[ 기타 -> 액세서리 카테고리]");
+			System.out.println("[ -> 액세서리 카테고리]");
 			setVisible(false); // 창 안보이게 하기
 			}
 		});						
@@ -123,24 +123,11 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new ProductList_Etc();
-			System.out.println("[ 기타 -> 기타 카테고리]");
+			System.out.println("[ -> 기타 카테고리]");
 			setVisible(false); // 창 안보이게 하기
 			}
 		});		
-				
-		menuItem = new JMenuItem("장바구니");
-		menuItem.addActionListener(menuItemListener);
-		categ.add(menuItem);
-		//클릭시 이동
-		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new Cart();
-			System.out.println("[ 기타 -> 장바구니]");
-			setVisible(false); // 창 안보이게 하기
-			}
-		});		
-		
+
 		//서브메뉴-마이페이지, 고객센터
 		menuItem = new JMenuItem("마이페이지");
 		menuItem.addActionListener(menuItemListener);
@@ -149,9 +136,10 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//new ProductList_Acc();
-			System.out.println("[ 기타  -> 마이페이지]");
-			//setVisible(false); // 창 안보이게 하기
+			//마이페이지 적어야
+			//new ???;
+			System.out.println("[ 상품 홈 -> 마이페이지]");
+			setVisible(false); // 창 안보이게 하기
 			}
 		});		
 		
@@ -162,9 +150,9 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//new ProductList_Acc();
-			System.out.println("[ 기타  -> 고객센터]");
-			//setVisible(false); // 창 안보이게 하기
+			//고객센터 적어야
+			System.out.println("[ 상품 홈 -> 고객센터]");
+			setVisible(false); // 창 안보이게 하기
 			}
 		});		
 		
@@ -189,7 +177,7 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		panel.addMouseListener(this);
 		
 		//---------------------상품 1
-		JButton button = new JButton("강아지 화장실", new ImageIcon("img/toilet.png"));
+		JButton button = new JButton("원목 하우스", new ImageIcon("img/doghouse.png"));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.BOTH;
 		gbc_button.insets = new Insets(0, 0, 5, 5);
@@ -198,20 +186,10 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		panel.add(button, gbc_button);
 		button.setBackground(new Color(160, 242, 196));
 		button.addMouseListener(this);
-
-		//---------------------상품 2
-		JButton button1 = new JButton("강아지 집", new ImageIcon("img/doghouse.png"));
-		GridBagConstraints gbc_button1 = new GridBagConstraints();
-		gbc_button1.fill = GridBagConstraints.BOTH;
-		gbc_button1.insets = new Insets(0, 0, 5, 5);
-		gbc_button1.gridx = 1;
-		gbc_button1.gridy = 0;
-		panel.add(button1, gbc_button1);
-		button1.setBackground(new Color(160, 242, 196));
-		button1.addMouseListener(this);
+		button.addMouseListener(this);
 		
-		//button1(개집) -> 이동
-		button1.addActionListener(new ActionListener() {
+		//button(개집) -> 이동
+		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Etc_DogHouse();
@@ -219,6 +197,18 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
+
+		/*
+		//---------------------상품 2
+		JButton button1 = new JButton("강아지 화장실", new ImageIcon("img/toilet.png"));
+		GridBagConstraints gbc_button1 = new GridBagConstraints();
+		gbc_button1.fill = GridBagConstraints.BOTH;
+		gbc_button1.insets = new Insets(0, 0, 5, 5);
+		gbc_button1.gridx = 1;
+		gbc_button1.gridy = 0;
+		panel.add(button1, gbc_button1);
+		button1.setBackground(new Color(160, 242, 196));
+		
 		
 		//---------------------상품 3
 		JButton button2 = new JButton("실리콘 브러쉬", new ImageIcon("img/brush.png"));
@@ -342,11 +332,11 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		panel.add(button12, gbc_button12);
 		button12.setBackground(new Color(160, 242, 196));
 		button12.addMouseListener(this);
-
+*/
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.BOLD, 20);
 		button.setFont(btn);
-		button1.setFont(btn);
+		/*button1.setFont(btn);
 		button2.setFont(btn);
 		button3.setFont(btn);
 		button4.setFont(btn);
@@ -357,14 +347,15 @@ public class ProductList_Etc extends JFrame implements MouseListener {
 		button9.setFont(btn);
 		button10.setFont(btn);
 		button11.setFont(btn);
-		button12.setFont(btn);
+		button12.setFont(btn);*/
 		
 		//panel 색상
 		panel.setBackground(new Color(160, 242, 196));
 
 		// 사이즈
-		this.setBounds(30, 30, 1350, 900);
-
+		//this.setBounds(30, 30, 1350, 900);
+		setSize(1350, 900);
+		
 		setAlwaysOnTop(true);
 
 		setTitle("댕숲");

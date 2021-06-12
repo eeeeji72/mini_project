@@ -21,7 +21,8 @@ import mini_project.com.kh.product.ProductList_Acc;
 import mini_project.com.kh.product.ProductList_Best;
 import mini_project.com.kh.product.ProductList_Clo;
 import mini_project.com.kh.product.ProductList_Etc;
-import mini_project.com.kh.product.ProductList_ToySnack;
+import mini_project.com.kh.product.ProductList_Snack;
+import mini_project.com.kh.product.ProductList_Toy;
 import mini_project.com.kh.product.ProductMain;
 
 public class ProductMain extends JFrame {
@@ -61,20 +62,19 @@ public class ProductMain extends JFrame {
 		});		
 		categ.addSeparator();
 		
-		
-		menuItem = new JMenuItem("베스트 상품");
+		menuItem = new JMenuItem("장난감");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
 		//클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ProductList_Best();
-				System.out.println("[ -> 베스트 카테고리]");
+				new ProductList_Toy();
+				System.out.println("[ -> 장난감 카테고리]");
 				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-
+		});	
+		
 		menuItem = new JMenuItem("의류");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
@@ -88,15 +88,15 @@ public class ProductMain extends JFrame {
 			}
 		});		
 				
-		menuItem = new JMenuItem("장난감&간식");
+		menuItem = new JMenuItem("간식");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
 		//클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new ProductList_ToySnack();
-			System.out.println("[ -> 장난감&간식 카테고리]");
+			new ProductList_Snack();
+			System.out.println("[ -> 간식 카테고리]");
 			setVisible(false); // 창 안보이게 하기
 			}
 		});		
@@ -127,20 +127,7 @@ public class ProductMain extends JFrame {
 			setVisible(false); // 창 안보이게 하기
 			}
 		});		
-				
-		menuItem = new JMenuItem("장바구니");
-		menuItem.addActionListener(menuItemListener);
-		categ.add(menuItem);
-		//클릭시 이동
-		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new Cart();
-			System.out.println("[ -> 장바구니]");
-			setVisible(false); // 창 안보이게 하기
-			}
-		});		
-		
+
 		//서브메뉴-마이페이지, 고객센터
 		menuItem = new JMenuItem("마이페이지");
 		menuItem.addActionListener(menuItemListener);
@@ -149,9 +136,10 @@ public class ProductMain extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//new ProductList_Acc();
+			//마이페이지 적어야
+			//new ???;
 			System.out.println("[ 상품 홈 -> 마이페이지]");
-			//setVisible(false); // 창 안보이게 하기
+			setVisible(false); // 창 안보이게 하기
 			}
 		});		
 		
@@ -162,9 +150,9 @@ public class ProductMain extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//new ProductList_Acc();
+			//고객센터 적어야
 			System.out.println("[ 상품 홈 -> 고객센터]");
-			//setVisible(false); // 창 안보이게 하기
+			setVisible(false); // 창 안보이게 하기
 			}
 		});		
 		
@@ -177,19 +165,18 @@ public class ProductMain extends JFrame {
 		
 		//상품 메인 화면
 		getContentPane().setLayout(new GridLayout(2, 3, 4, 4));
-		JButton button = new JButton("베스트 상품", new ImageIcon("img/best.png"));
+		JButton button = new JButton("장난감", new ImageIcon("img/fly.png"));
 		JButton button1 = new JButton("의류", new ImageIcon("img/sf.png"));
-		JButton button2 = new JButton("장난감&간식", new ImageIcon("img/snack.png"));
+		JButton button2 = new JButton("간식", new ImageIcon("img/snack.png"));
 		JButton button3 = new JButton("액세서리", new ImageIcon("img/acc.png"));
 		JButton button4 = new JButton("기타", new ImageIcon("img/sham.png"));
-		JButton button5 = new JButton("장바구니", new ImageIcon("img/cart.png"));
 
 		getContentPane().add(button);
 		getContentPane().add(button1);
 		getContentPane().add(button2);
 		getContentPane().add(button3);
 		getContentPane().add(button4);
-		getContentPane().add(button5);
+		//getContentPane().add(button5);
 
 		//상품 메인&버튼 색
 		button.setBackground(new Color(160, 242, 196));
@@ -197,7 +184,7 @@ public class ProductMain extends JFrame {
 		button2.setBackground(new Color(160, 242, 196));
 		button3.setBackground(new Color(160, 242, 196));
 		button4.setBackground(new Color(160, 242, 196));
-		button5.setBackground(new Color(160, 242, 196));
+		//button5.setBackground(new Color(160, 242, 196));
 
 		getContentPane().setBackground(new Color(160, 242, 196));
 		// 폰트, 크기 적용
@@ -207,18 +194,17 @@ public class ProductMain extends JFrame {
 		button2.setFont(btn);
 		button3.setFont(btn);
 		button4.setFont(btn);
-		button5.setFont(btn);
 		
-		//button(베스트) -> 이동
+		//button(장난감) -> 이동
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ProductList_Best();
-				System.out.println("[ -> 베스트 카테고리]");
+				new ProductList_Toy();
+				System.out.println("[ -> 장난감 카테고리]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
-
+		
 		
 		//button1(의류) -> 이동
 		button1.addActionListener(new ActionListener() {
@@ -230,12 +216,12 @@ public class ProductMain extends JFrame {
 			}
 		});		
 		
-		//button2(장난감&간식) -> 이동
+		//button2(간식) -> 이동
 		button2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ProductList_ToySnack();
-				System.out.println("[ -> 장난감&간식 카테고리]");
+				new ProductList_Snack();
+				System.out.println("[ -> 간식 카테고리]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});		
@@ -260,18 +246,7 @@ public class ProductMain extends JFrame {
 			}
 		});
 
-		//button5(장바구니) -> 이동
-		button5.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Cart();
-				System.out.println("[ -> 장바구니]");
-				setVisible(false); // 창 안보이게 하기
-			}
-		});
-
 		//크기
-		//this.setBounds(30, 30, 1350, 900);
 		setSize(1350, 900);
 		setResizable(false);// 크기 고정
 		setAlwaysOnTop(true);	//항상 위에
