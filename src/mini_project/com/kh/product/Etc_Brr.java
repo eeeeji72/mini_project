@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -40,8 +39,7 @@ import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.my.Page11;
 
-
-public class Etc_DogHouse extends JFrame implements MouseListener {
+public class Etc_Brr extends JFrame implements MouseListener {
 	private JTable table;
 	private static int HEADER_HEIGHT = 40; // table header 높이
 
@@ -57,9 +55,10 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		this.filePath = filePath;
 	}
 	
-	public Etc_DogHouse() {
+	public Etc_Brr() {
+		// TODO Auto-generated constructor stub
 		// File Open
-        File wFile = new File("PC1000.txt");
+        File wFile = new File("PG1129.txt");
        
         // File Reader를 위한 객체 생성
         FileReader frd = null;
@@ -272,7 +271,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		// 사진
 		JPanel panel_8 = new JPanel() {
-			Image background = new ImageIcon("img/doghouse.png").getImage();
+			Image background = new ImageIcon("img/brr.png").getImage();
 
 			public void paint(Graphics g) {// 그리는 함수
 				Dimension d = getSize();

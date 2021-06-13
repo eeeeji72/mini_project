@@ -176,7 +176,7 @@ public class ProductList_Acc extends JFrame implements MouseListener {
 		panel.setLayout(gbl_panel);
 
 		// ---------------------상품 1
-		JButton button = new JButton("뜨개질 솜방울 모자", new ImageIcon("img/cap_red.png"));
+		JButton button = new JButton("뜨개질 솜방울 모자", new ImageIcon("img/cap_y.png"));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.BOTH;
 		gbc_button.insets = new Insets(0, 0, 5, 5);
@@ -190,7 +190,7 @@ public class ProductList_Acc extends JFrame implements MouseListener {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Acc_RedCap();
+				new Acc_YCap();
 				System.out.println("[ -> 강아지 집]");
 				setVisible(false); // 창 안보이게 하기
 			}
@@ -217,10 +217,74 @@ public class ProductList_Acc extends JFrame implements MouseListener {
 			}
 		});
 
+		//---------------------상품 3
+		JButton button2 = new JButton("강아지 파티모자", new ImageIcon("img/partycap.png"));
+		GridBagConstraints gbc_button2 = new GridBagConstraints();
+		gbc_button2.fill = GridBagConstraints.BOTH;
+		gbc_button2.insets = new Insets(0, 0, 5, 5);
+		gbc_button2.gridx = 2;
+		gbc_button2.gridy = 0;
+		panel.add(button2, gbc_button2);
+		button2.setBackground(new Color(160, 242, 196));
+		button2.addMouseListener(this);
+		//이동--------------------
+		button2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Acc_Party();
+				System.out.println("[ -> 강아지 파티모자 ]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+		
+		
+		//---------------------상품 4
+		JButton button3 = new JButton("산타모자", new ImageIcon("img/santa.png"));
+		GridBagConstraints gbc_button3 = new GridBagConstraints();
+		gbc_button3.fill = GridBagConstraints.BOTH;
+		gbc_button3.insets = new Insets(0, 0, 5, 5);
+		gbc_button3.gridx = 0;
+		gbc_button3.gridy = 1;
+		panel.add(button3, gbc_button3);
+		button3.setBackground(new Color(160, 242, 196));
+		button3.addMouseListener(this);
+		//이동--------------------
+		button3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Acc_Santa();
+				System.out.println("[ -> 산타모자]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+		
+		//---------------------상품 5
+		JButton button4 = new JButton("댕댕이 인식표 목걸이", new ImageIcon("img/name.png"));
+		GridBagConstraints gbc_button4 = new GridBagConstraints();
+		gbc_button4.fill = GridBagConstraints.BOTH;
+		gbc_button4.insets = new Insets(0, 0, 5, 5);
+		gbc_button4.gridx = 1;
+		gbc_button4.gridy = 1;
+		panel.add(button4, gbc_button4);
+		button4.setBackground(new Color(160, 242, 196));
+		button4.addMouseListener(this);
+		//이동--------------------
+		button4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Acc_Name();
+				System.out.println("[ -> 댕댕이 인식표 목걸이]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.BOLD, 20);
 		button.setFont(btn);
 		button1.setFont(btn);
+		button2.setFont(btn);
+		button3.setFont(btn);
+		button4.setFont(btn);
 		
 		// panel 색상
 		panel.setBackground(new Color(160, 242, 196));

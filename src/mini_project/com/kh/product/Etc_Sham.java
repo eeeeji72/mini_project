@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -40,8 +39,7 @@ import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.my.Page11;
 
-
-public class Etc_DogHouse extends JFrame implements MouseListener {
+public class Etc_Sham extends JFrame implements MouseListener {
 	private JTable table;
 	private static int HEADER_HEIGHT = 40; // table header 높이
 
@@ -57,9 +55,10 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		this.filePath = filePath;
 	}
 	
-	public Etc_DogHouse() {
+	public Etc_Sham() {
+		// TODO Auto-generated constructor stub
 		// File Open
-        File wFile = new File("PC1000.txt");
+        File wFile = new File("PG2222.txt");
        
         // File Reader를 위한 객체 생성
         FileReader frd = null;
@@ -272,7 +271,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		// 사진
 		JPanel panel_8 = new JPanel() {
-			Image background = new ImageIcon("img/doghouse.png").getImage();
+			Image background = new ImageIcon("img/sham.png").getImage();
 
 			public void paint(Graphics g) {// 그리는 함수
 				Dimension d = getSize();
@@ -338,12 +337,12 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		panel_6.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		// 제품 선택-콤보박스
-		String dsize[] = { "소형견 용", "중형견 용 (+5000원)", "대형견 용 (+10000원)" };
+		String dsize[] = { "단모용", "장모용", "이중모" };
 		//int [] productprice = {Integer.parseInt(pprice), 26000, 31000};
 		//Integer.parseInt(pprice)
 		int p = Integer.parseInt(pprice);
-		int p1 = Integer.parseInt(pprice)+5000;
-		int p2 = Integer.parseInt(pprice)+10000;
+		int p1 = Integer.parseInt(pprice);
+		int p2 = Integer.parseInt(pprice);
 		int [] productprice = {p, p1, p2};
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
@@ -476,9 +475,9 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 					JButton goCart = (JButton) e.getSource();
 					DefaultTableModel m = (DefaultTableModel) table.getModel();
-					if (hsize.getSelectedItem().toString().equals("소형견 용")) {
+					if (hsize.getSelectedItem().toString().equals("단모용")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[0] });
-					} else if (hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
+					} else if (hsize.getSelectedItem().toString().equals("장모용")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[1] });
 					} else {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
@@ -488,9 +487,9 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 					String info[] = new String[3]; //한행 (row) 에 저장할 데이터 모음
 					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
 					info[1] = "1";				
-					if(hsize.getSelectedItem().toString().equals("소형견 용")) {
+					if(hsize.getSelectedItem().toString().equals("단모용")) {
 						info[2] = Integer.toString(p);
-					}else if(hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
+					}else if(hsize.getSelectedItem().toString().equals("장모용")) {
 						info[2] = Integer.toString(p1);
 					}else {
 						info[2] = Integer.toString(p2);
