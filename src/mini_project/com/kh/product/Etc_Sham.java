@@ -38,6 +38,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.my.Page11;
+import mini_project.com.kh.review.ProductReviewList;
 
 public class Etc_Sham extends JFrame implements MouseListener {
 	private JTable table;
@@ -357,6 +358,13 @@ public class Etc_Sham extends JFrame implements MouseListener {
 
 		// 리뷰 버튼
 		JButton btnNewButton_2 = new JButton("리뷰보기");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductReviewList();
+				setVisible(true);
+			}
+		});
 		btnNewButton_2.setPreferredSize(new Dimension(118, 27));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(Color.DARK_GRAY);

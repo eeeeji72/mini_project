@@ -18,11 +18,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.main.MainPage11;
 import mini_project.com.kh.my.Page11;
-import mini_project.com.kh.product.Cart;
 import mini_project.com.kh.product.ProductList_Acc;
-import mini_project.com.kh.product.ProductList_Best;
 import mini_project.com.kh.product.ProductList_Clo;
 import mini_project.com.kh.product.ProductList_Etc;
 import mini_project.com.kh.product.ProductList_Snack;
@@ -153,6 +152,7 @@ public class ProductMain extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 고객센터 적어야
+				new MainBoard();
 				System.out.println("[ 상품 홈 -> 고객센터]");
 				setVisible(false); // 창 안보이게 하기
 			}

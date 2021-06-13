@@ -38,7 +38,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.my.Page11;
+import mini_project.com.kh.review.ProductReviewList;
 
 public class Snack_Bab extends JFrame implements MouseListener {
 	private JTable table;
@@ -225,7 +227,7 @@ public class Snack_Bab extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//고객센터 적어야
+			new MainBoard();
 			System.out.println("[ 상품 홈 -> 고객센터]");
 			setVisible(false); // 창 안보이게 하기
 			}
@@ -359,6 +361,13 @@ public class Snack_Bab extends JFrame implements MouseListener {
 
 		// 리뷰 버튼
 		JButton btnNewButton_2 = new JButton("리뷰보기");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductReviewList();
+				setVisible(true);
+			}
+		});
 		btnNewButton_2.setPreferredSize(new Dimension(118, 27));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(Color.DARK_GRAY);
