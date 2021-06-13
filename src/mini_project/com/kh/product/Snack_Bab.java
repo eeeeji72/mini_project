@@ -341,7 +341,10 @@ public class Snack_Bab extends JFrame implements MouseListener {
 
 		// 제품 선택-콤보박스------------------------------------------------------------
 		String dsize[] = { "15kg", "30kg", "45kg" };
-		int[] productprice = { 30000, 60000, 90000 };
+		int p = Integer.parseInt(pprice);
+		int p1 = Integer.parseInt(pprice)*2;
+		int p2 = Integer.parseInt(pprice)*3;
+		int [] productprice = {p, p1, p2};
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -479,11 +482,11 @@ public class Snack_Bab extends JFrame implements MouseListener {
 					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
 					info[1] = "1";				
 					if(hsize.getSelectedItem().toString().equals("1세트(2개입 X 1)")) {
-						info[2] = "30000";
+						info[2] = Integer.toString(p);
 					}else if(hsize.getSelectedItem().toString().equals("2세트(2개입 X 2)")) {
-						info[2] = "60000";
+						info[2] = Integer.toString(p1);
 					}else {
-						info[2] = "90000";
+						info[2] = Integer.toString(p2);
 					}
 					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
 					
@@ -513,6 +516,9 @@ public class Snack_Bab extends JFrame implements MouseListener {
 							String fileN = "buy_list.txt";
 							try {
 								File file = new File(fileN);
+								if(!file.exists()) {
+									file.createNewFile();
+								}
 								FileWriter fw1 = new FileWriter(file, true);
 								fw1.write(text);
 								fw1.close();

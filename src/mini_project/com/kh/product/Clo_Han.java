@@ -336,8 +336,12 @@ public class Clo_Han extends JFrame implements MouseListener {
 		panel_6.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		// 제품 선택-콤보박스------------------------------------------------------------
-		String dsize[] = { "1개", "2세트", "3세트" };
-		int[] productprice = { 110000, 220000, 330000 };
+		String dsize[] = { "1개", "2개", "3개" };
+		//int[] productprice = { 110000, 220000, 330000 };
+		int p = Integer.parseInt(pprice);
+		int p1 = Integer.parseInt(pprice)*2;
+		int p2 = Integer.parseInt(pprice)*3;
+		int [] productprice = {p, p1, p2};
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -464,7 +468,7 @@ public class Clo_Han extends JFrame implements MouseListener {
 					DefaultTableModel m = (DefaultTableModel) table.getModel();
 					if (hsize.getSelectedItem().toString().equals("1개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[0] });
-					} else if (hsize.getSelectedItem().toString().equals("2세트")) {
+					} else if (hsize.getSelectedItem().toString().equals("2개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[1] });
 					} else {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
@@ -475,11 +479,11 @@ public class Clo_Han extends JFrame implements MouseListener {
 					info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
 					info[1] = "1";
 					if (hsize.getSelectedItem().toString().equals("1개")) {
-						info[2] = "110000";
-					} else if (hsize.getSelectedItem().toString().equals("2세트")) {
-						info[2] = "220000";
+						info[2] = Integer.toString(p);
+					} else if (hsize.getSelectedItem().toString().equals("2개")) {
+						info[2] = Integer.toString(p1);
 					} else {
-						info[2] = "330000";
+						info[2] = Integer.toString(p2);
 					}
 					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
 					
@@ -508,6 +512,9 @@ public class Clo_Han extends JFrame implements MouseListener {
 							String fileN = "buy_list.txt";
 							try {
 								File file = new File(fileN);
+								if(!file.exists()) {
+									file.createNewFile();
+								}
 								FileWriter fw1 = new FileWriter(file, true);
 								fw1.write(text);
 								fw1.close();

@@ -340,8 +340,11 @@ public class Acc_RedCap extends JFrame implements MouseListener {
 		panel_6.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		// 제품 선택-콤보박스------------------------------------------------------------
-		String dsize[] = { "1세트", "2세트", "3세트" };
-		int[] productprice = { 15200, 30400, 45600 };
+		String dsize[] = { "1개", "2개", "3개" };
+		int p = Integer.parseInt(pprice);
+		int p1 = Integer.parseInt(pprice)*2;
+		int p2 = Integer.parseInt(pprice)*3;
+		int [] productprice = {p, p1, p2};
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -466,9 +469,9 @@ public class Acc_RedCap extends JFrame implements MouseListener {
 
 					JButton goCart = (JButton) e.getSource();
 					DefaultTableModel m = (DefaultTableModel) table.getModel();
-					if (hsize.getSelectedItem().toString().equals("1세트")) {
+					if (hsize.getSelectedItem().toString().equals("1개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[0] });
-					} else if (hsize.getSelectedItem().toString().equals("2세트")) {
+					} else if (hsize.getSelectedItem().toString().equals("2개")) {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[1] });
 					} else {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
@@ -478,12 +481,12 @@ public class Acc_RedCap extends JFrame implements MouseListener {
 					String info[] = new String[3]; //한행 (row) 에 저장할 데이터 모음
 					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
 					info[1] = "1";				
-					if(hsize.getSelectedItem().toString().equals("1세트")) {
-						info[2] = "15200";
-					}else if(hsize.getSelectedItem().toString().equals("2세트")) {
-						info[2] = "30400";
-					}else {
-						info[2] = "45600";
+					if (hsize.getSelectedItem().toString().equals("1개")) {
+						info[2] = Integer.toString(p);
+					} else if (hsize.getSelectedItem().toString().equals("2개")) {
+						info[2] = Integer.toString(p1);
+					} else {
+						info[2] = Integer.toString(p2);
 					}
 					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
 					
@@ -513,6 +516,9 @@ public class Acc_RedCap extends JFrame implements MouseListener {
 							String fileN = "buy_list.txt";
 							try {
 								File file = new File(fileN);
+								if(!file.exists()) {
+									file.createNewFile();
+								}
 								FileWriter fw1 = new FileWriter(file, true);
 								fw1.write(text);
 								fw1.close();
