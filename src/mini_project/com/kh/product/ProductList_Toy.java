@@ -22,6 +22,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.my.Page11;
 
 public class ProductList_Toy extends JFrame implements MouseListener {
@@ -148,6 +149,7 @@ public class ProductList_Toy extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 고객센터 적어야
+				new MainBoard();
 				System.out.println("[ 장난감 -> 고객센터]");
 				setVisible(false); // 창 안보이게 하기
 			}

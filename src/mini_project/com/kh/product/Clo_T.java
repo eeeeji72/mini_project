@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -19,13 +20,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -38,7 +39,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.my.Page11;
+import mini_project.com.kh.review.CreatedList;
 
 public class Clo_T extends JFrame implements MouseListener {
 	private JTable table;
@@ -223,6 +226,7 @@ public class Clo_T extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 고객센터 적어야
+				new MainBoard();
 				System.out.println("[ 상품 홈 -> 고객센터]");
 				setVisible(false); // 창 안보이게 하기
 			}
@@ -362,6 +366,18 @@ public class Clo_T extends JFrame implements MouseListener {
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_2.gridx = 2;
 		gbc_btnNewButton_2.gridy = 5;
+		btnNewButton_2.addActionListener(new ActionListener() {
+
+	         // 작성한 리뷰
+	         @Override
+	         public void actionPerformed(ActionEvent e) {
+	            CreatedList CLdialog = new CreatedList();
+	            CLdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	            CLdialog.setVisible(true);
+
+	         }
+	      });
+
 		panel_6.add(btnNewButton_2, gbc_btnNewButton_2);
 		// 폰트, 크기 적용
 		btnNewButton_2.setFont(btn);
