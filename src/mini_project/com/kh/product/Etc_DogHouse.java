@@ -134,21 +134,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 		});		
 		categ.addSeparator();
 		
-		/*
-		menuItem = new JMenuItem("베스트 상품");
-		menuItem.addActionListener(menuItemListener);
-		categ.add(menuItem);
-		//클릭시 이동
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new ProductList_Best();
-				System.out.println("[ -> 베스트 카테고리]");
-				setVisible(false); // 창 안보이게 하기
-			}
-		});		
-*/
-		
 		menuItem = new JMenuItem("장난감");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
@@ -354,7 +339,12 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		// 제품 선택-콤보박스
 		String dsize[] = { "소형견 용", "중형견 용 (+5000원)", "대형견 용 (+10000원)" };
-		int [] productprice = {21000, 26000, 31000};
+		//int [] productprice = {Integer.parseInt(pprice), 26000, 31000};
+		//Integer.parseInt(pprice)
+		int p = Integer.parseInt(pprice);
+		int p1 = Integer.parseInt(pprice)*2;
+		int p2 = Integer.parseInt(pprice)*3;
+		int [] productprice = {p, p1, p2};
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -498,11 +488,11 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
 					info[1] = "1";				
 					if(hsize.getSelectedItem().toString().equals("소형견 용")) {
-						info[2] = "21000";
+						info[2] = Integer.toString(p);
 					}else if(hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
-						info[2] = "26000";
+						info[2] = Integer.toString(p1);
 					}else {
-						info[2] = "31000";
+						info[2] = Integer.toString(p2);
 					}
 					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + ", 가격 : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
 					
@@ -527,12 +517,14 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 								JOptionPane.YES_NO_CANCEL_OPTION);
 						if (qut_data == 0) { // [예] 버튼
 							System.out.println(pay_list.toString());
-							
 								String text = pay_list.toString();
 								String fileN = "buy_list.txt";
 								try {
 									File file = new File(fileN);
-									FileWriter fw1 = new FileWriter(file);
+									if(!file.exists()) {
+										file.createNewFile();
+									}
+									FileWriter fw1 = new FileWriter(file, true);
 									fw1.write(text);
 									fw1.close();
 								}catch (Exception e1) {
