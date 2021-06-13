@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -40,26 +39,25 @@ import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.my.Page11;
 
-
-public class Etc_DogHouse extends JFrame implements MouseListener {
+public class Acc_Santa extends JFrame implements MouseListener {
 	private JTable table;
 	private static int HEADER_HEIGHT = 40; // table header 높이
 
 	private File dir;
 	private String filePath;
 	ArrayList<String> pFiles = new ArrayList<String>();
-	
+
 	String ptitle;
 	String pprice;
 	String pinfo;
-	
+
 	void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-	
-	public Etc_DogHouse() {
+
+	public Acc_Santa() {
 		// File Open
-        File wFile = new File("PC1000.txt");
+        File wFile = new File("PD2222.txt");
        
         // File Reader를 위한 객체 생성
         FileReader frd = null;
@@ -272,7 +270,7 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		// 사진
 		JPanel panel_8 = new JPanel() {
-			Image background = new ImageIcon("img/doghouse.png").getImage();
+			Image background = new ImageIcon("img/santa.png").getImage();
 
 			public void paint(Graphics g) {// 그리는 함수
 				Dimension d = getSize();
@@ -619,8 +617,8 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		//눌렀을 때 이전 화면으로 전환
 		if (e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-			System.out.println("[ -> 기타 카테고리]");
-			new ProductList_Etc();
+			System.out.println("[ -> 액세서리 카테고리]");
+			new ProductList_Acc();
 			setVisible(false);
 		}
 	}

@@ -183,8 +183,8 @@ public class ProductList_Toy extends JFrame implements MouseListener {
 		panel.add(button, gbc_button);
 		button.setBackground(new Color(160, 242, 196));
 		button.addMouseListener(this);
-		
-		//button(삑삑이 아령공) -> 이동
+
+		// button(삑삑이 아령공) -> 이동
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,9 +194,50 @@ public class ProductList_Toy extends JFrame implements MouseListener {
 			}
 		});
 
+		// ---------------------상품 2
+		JButton button1 = new JButton("삑삑 인형 세트", new ImageIcon("img/doll.png"));GridBagConstraints gbc_button1 = new GridBagConstraints();
+		gbc_button1.fill = GridBagConstraints.BOTH;
+		gbc_button1.insets = new Insets(0, 0, 5, 5);
+		gbc_button1.gridx = 1;
+		gbc_button1.gridy = 0;
+		panel.add(button1, gbc_button1);
+		button1.setBackground(new Color(160, 242, 196));
+		button1.addMouseListener(this);
+		// 이동--------------------
+		button1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Toy_PickDoll();
+				System.out.println("[ -> 강아지 화장실]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		// ---------------------상품 3
+		JButton button2 = new JButton("봉제인형 세트", new ImageIcon("img/toy2.png"));
+		GridBagConstraints gbc_button2 = new GridBagConstraints();
+		gbc_button2.fill = GridBagConstraints.BOTH;
+		gbc_button2.insets = new Insets(0, 0, 5, 5);
+		gbc_button2.gridx = 2;
+		gbc_button2.gridy = 0;
+		panel.add(button2, gbc_button2);
+		button2.setBackground(new Color(160, 242, 196));
+		button2.addMouseListener(this);
+		// 이동--------------------
+		button2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Toy_Doll();
+				System.out.println("[ -> 실리콘 브러쉬]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.BOLD, 20);
 		button.setFont(btn);
+		button1.setFont(btn);
+		button2.setFont(btn);
 
 		// panel 색상
 		panel.setBackground(new Color(160, 242, 196));

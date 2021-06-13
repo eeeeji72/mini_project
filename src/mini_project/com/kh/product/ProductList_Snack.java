@@ -297,12 +297,33 @@ public class ProductList_Snack extends JFrame implements MouseListener {
 			}
 		});
 
+		//---------------------상품 5
+		JButton button4 = new JButton("닭 가슴살", new ImageIcon("img/chi.png"));
+		GridBagConstraints gbc_button4 = new GridBagConstraints();
+		gbc_button4.fill = GridBagConstraints.BOTH;
+		gbc_button4.insets = new Insets(0, 0, 5, 5);
+		gbc_button4.gridx = 1;
+		gbc_button4.gridy = 1;
+		panel.add(button4, gbc_button4);
+		button4.setBackground(new Color(160, 242, 196));
+		button4.addMouseListener(this);
+		//이동--------------------
+		button4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Snack_Chi();
+				System.out.println("[ -> 닭 가슴살]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.BOLD, 20);
 		button.setFont(btn);
 		button1.setFont(btn);
 		button2.setFont(btn);
 		button3.setFont(btn);
+		button4.setFont(btn);
 
 		// panel 색상
 		panel.setBackground(new Color(160, 242, 196));
