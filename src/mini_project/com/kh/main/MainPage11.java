@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.product.ProductMain;
 import mini_project.com.kh.product.Snack_Gum;
@@ -87,6 +88,20 @@ public class MainPage11 extends JFrame{
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.setFont(btn);
 		contentPane.add(btnNewButton_3);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainBoard main = new MainBoard();
+				main.setVisible(true);
+				setVisible(false); 
+			}
+		});
+		
+		
+		
+		
 
 		JButton btnNewButton_4 = new JButton("로그인");
 		btnNewButton_4.setBounds(1095, 10, 97, 23);
