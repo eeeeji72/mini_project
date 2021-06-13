@@ -2,6 +2,7 @@ package mini_project.com.kh.main;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +37,10 @@ public class MainPage11 extends JFrame{
 		Color b = new Color(160, 242, 196);
 		contentPane.setBackground(b);
 
+		// 폰트, 크기 적용
+		Font btn = new Font("NotoSansCJKkr", Font.PLAIN, 13);
+	
+		
 		JButton btnNewButton = new JButton("상품 홈\r\n");
 		btnNewButton.setBounds(149, 91, 110, 37);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -47,13 +52,20 @@ public class MainPage11 extends JFrame{
 				setVisible(false); // 창 안보이게 하기
 			}
 		});		
+
+		btnNewButton.setBackground(new Color(0, 153, 255));
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setFont(btn);
 		contentPane.add(btnNewButton);
 	
 
 		JButton btnNewButton_1 = new JButton("상품후기");
 		btnNewButton_1.setBounds(473, 91, 110, 37);
+		btnNewButton_1.setBackground(new Color(0, 153, 255));
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setFont(btn);
 		contentPane.add(btnNewButton_1);
-
+		
 		JButton btnNewButton_2 = new JButton("마이페이지");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,18 +76,30 @@ public class MainPage11 extends JFrame{
 			}
 		});
 		btnNewButton_2.setBounds(783, 91, 110, 37);
+		btnNewButton_2.setBackground(new Color(0, 153, 255));
+		btnNewButton_2.setForeground(Color.WHITE);
+		btnNewButton_2.setFont(btn);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("고객센터");
 		btnNewButton_3.setBounds(1083, 91, 110, 37);
+		btnNewButton_3.setBackground(new Color(0, 153, 255));
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setFont(btn);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("로그인");
 		btnNewButton_4.setBounds(1095, 10, 97, 23);
+		btnNewButton_4.setBackground(new Color(0, 153, 255));
+		btnNewButton_4.setForeground(Color.WHITE);
+		btnNewButton_4.setFont(btn);
 		contentPane.add(btnNewButton_4);
 
 		JButton btnNewButton_5 = new JButton("회원가입");
 		btnNewButton_5.setBounds(1225, 10, 97, 23);
+		btnNewButton_5.setBackground(new Color(0, 153, 255));
+		btnNewButton_5.setForeground(Color.WHITE);
+		btnNewButton_5.setFont(btn);
 		contentPane.add(btnNewButton_5);
 
 		JLabel lblNewLabel = new JLabel();

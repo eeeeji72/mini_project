@@ -47,6 +47,7 @@ public class Page11 extends JFrame {
 		setContentPane(Mypage);
 		Mypage.setLayout(null);
 
+		
 		JButton btnNewButton_1 = new JButton("내 정보 수정\r\n");
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBackground(new Color(0, 153, 255));
