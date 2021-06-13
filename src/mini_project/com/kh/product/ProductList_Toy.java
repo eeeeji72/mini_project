@@ -24,7 +24,6 @@ import javax.swing.JScrollPane;
 
 public class ProductList_Toy extends JFrame implements MouseListener {
 	public ProductList_Toy() {
-		// TODO Auto-generated constructor stub
 
 		JMenuBar menuBar = new JMenuBar(); // 메뉴바 생성
 

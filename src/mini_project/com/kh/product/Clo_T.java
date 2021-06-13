@@ -611,15 +611,4 @@ public class Clo_T extends JFrame implements MouseListener {
 		}
 	};
 
-	static List<String> Gum(String name) throws IOException {
-
-		List<String> retStr = new ArrayList<String>();
-		BufferedReader in = new BufferedReader(new FileReader(name));
-		String s;
-		while ((s = in.readLine()) != null) {
-			retStr.add(s);
-		}
-		in.close();
-		return retStr;
-	}
 }
