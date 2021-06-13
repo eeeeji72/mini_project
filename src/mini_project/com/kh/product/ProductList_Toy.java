@@ -22,6 +22,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import mini_project.com.kh.my.Page11;
+
 public class ProductList_Toy extends JFrame implements MouseListener {
 	public ProductList_Toy() {
 
@@ -132,8 +134,7 @@ public class ProductList_Toy extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 마이페이지 적어야
-				// new ???;
+				new Page11();
 				System.out.println("[ 장난감 -> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
 			}
