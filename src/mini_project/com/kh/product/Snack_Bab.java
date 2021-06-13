@@ -38,6 +38,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import mini_project.com.kh.my.Page11;
+
 public class Snack_Bab extends JFrame implements MouseListener {
 	private JTable table;
 	private static int HEADER_HEIGHT = 40; // table header 높이
@@ -210,8 +212,7 @@ public class Snack_Bab extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//마이페이지 적어야
-			//new ???;
+			new Page11();
 			System.out.println("[ 상품 홈 -> 마이페이지]");
 			setVisible(false); // 창 안보이게 하기
 			}
