@@ -56,7 +56,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 	}
 	
 	public Etc_DogHouse() {
-
 		// File Open
         File wFile = new File("PC1000.txt");
        

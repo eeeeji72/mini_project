@@ -162,7 +162,6 @@ public class ProductMain extends JFrame {
 		
 		
 		
-		
 		//상품 메인 화면
 		getContentPane().setLayout(new GridLayout(2, 3, 4, 4));
 		JButton button = new JButton("장난감", new ImageIcon("img/fly.png"));

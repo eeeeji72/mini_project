@@ -216,84 +216,11 @@ public class ProductList_Acc extends JFrame implements MouseListener {
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
-/*
-		// ---------------------상품 3
-		JButton button2 = new JButton("파티 꼬깔모자", new ImageIcon("img/partycap.png"));
-		GridBagConstraints gbc_button2 = new GridBagConstraints();
-		gbc_button2.fill = GridBagConstraints.BOTH;
-		gbc_button2.insets = new Insets(0, 0, 5, 5);
-		gbc_button2.gridx = 2;
-		gbc_button2.gridy = 0;
-		panel.add(button2, gbc_button2);
-		button2.setBackground(new Color(160, 242, 196));
-		button2.addMouseListener(this);
 
-		// ---------------------상품 4
-		JButton button3 = new JButton("산타모자", new ImageIcon("img/santa.png"));
-		GridBagConstraints gbc_button3 = new GridBagConstraints();
-		gbc_button3.fill = GridBagConstraints.BOTH;
-		gbc_button3.insets = new Insets(0, 0, 5, 5);
-		gbc_button3.gridx = 0;
-		gbc_button3.gridy = 1;
-		panel.add(button3, gbc_button3);
-		button3.setBackground(new Color(160, 242, 196));
-		button3.addMouseListener(this);
-
-		// ---------------------상품 5
-		JButton button4 = new JButton("목도리", new ImageIcon("img/muffler.png"));
-		GridBagConstraints gbc_button4 = new GridBagConstraints();
-		gbc_button4.fill = GridBagConstraints.BOTH;
-		gbc_button4.insets = new Insets(0, 0, 5, 5);
-		gbc_button4.gridx = 1;
-		gbc_button4.gridy = 1;
-		panel.add(button4, gbc_button4);
-		button4.setBackground(new Color(160, 242, 196));
-		button4.addMouseListener(this);
-		
-		// ---------------------상품 6
-		JButton button5 = new JButton("목걸이(분홍)", new ImageIcon("img/pinkneck.png"));
-		GridBagConstraints gbc_button5 = new GridBagConstraints();
-		gbc_button5.fill = GridBagConstraints.BOTH;
-		gbc_button5.insets = new Insets(0, 0, 5, 5);
-		gbc_button5.gridx = 2;
-		gbc_button5.gridy = 1;
-		panel.add(button5, gbc_button5);
-		button5.setBackground(new Color(160, 242, 196));
-		button5.addMouseListener(this);
-
-		// ---------------------상품 7
-		JButton button6 = new JButton("리드 줄", new ImageIcon("img/lead.png"));
-		GridBagConstraints gbc_button6 = new GridBagConstraints();
-		gbc_button6.fill = GridBagConstraints.BOTH;
-		gbc_button6.insets = new Insets(0, 0, 5, 5);
-		gbc_button6.gridx = 0;
-		gbc_button6.gridy = 2;
-		panel.add(button6, gbc_button6);
-		button6.setBackground(new Color(160, 242, 196));
-		button6.addMouseListener(this);
-		
-
-		//---------------------상품 8
-		JButton button7 = new JButton("이름표", new ImageIcon("img/name.png"));
-		GridBagConstraints gbc_button7 = new GridBagConstraints();
-		gbc_button7.fill = GridBagConstraints.BOTH;
-		gbc_button7.insets = new Insets(0, 0, 5, 5);
-		gbc_button7.gridx = 1;
-		gbc_button7.gridy = 2;
-		panel.add(button7, gbc_button7);
-		button7.setBackground(new Color(160, 242, 196));
-		button7.addMouseListener(this);
-*/
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.BOLD, 20);
 		button.setFont(btn);
 		button1.setFont(btn);
-		/*button2.setFont(btn);
-		button3.setFont(btn);
-		button4.setFont(btn);
-		button5.setFont(btn);
-		button6.setFont(btn);
-		button7.setFont(btn);*/
 		
 		// panel 색상
 		panel.setBackground(new Color(160, 242, 196));

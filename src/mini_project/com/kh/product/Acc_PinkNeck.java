@@ -56,7 +56,6 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 	}
 	
 	public Acc_PinkNeck() {
-		// TODO Auto-generated constructor stub
 		// File Open
         File wFile = new File("PD2131.txt");
        
@@ -614,15 +613,4 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 		}
 	};
 
-	static List<String> Gum(String name) throws IOException {
-
-		List<String> retStr = new ArrayList<String>();
-		BufferedReader in = new BufferedReader(new FileReader(name));
-		String s;
-		while ((s = in.readLine()) != null) {
-			retStr.add(s);
-		}
-		in.close();
-		return retStr;
-	}
 }
