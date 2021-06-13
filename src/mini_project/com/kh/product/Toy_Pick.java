@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -480,11 +481,9 @@ public class Toy_Pick extends JFrame implements MouseListener {
 					} else {
 						info[2] = "15000";
 					}
-					pay_list.add(hsize.getSelectedItem().toString() + " => 수량 : " + count + " : " + info[2] + "원"); // 결제
-																													// 금액
-																													// 리스트에
-																													// 추가
 
+					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
+					
 					int rowCont = table.getRowCount();
 					int sum = 0;
 					for (int i = 0; i < rowCont; i++) {
@@ -505,7 +504,17 @@ public class Toy_Pick extends JFrame implements MouseListener {
 						int qut_data = JOptionPane.showConfirmDialog(getContentPane(), "주문을 결제하시겠습니까?", "주문 진행",
 								JOptionPane.YES_NO_CANCEL_OPTION);
 						if (qut_data == 0) { // [예] 버튼
-							// System.out.println(pay_list.toString());
+							System.out.println(pay_list.toString());
+							String text = pay_list.toString();
+							String fileN = "buy_list.txt";
+							try {
+								File file = new File(fileN);
+								FileWriter fw1 = new FileWriter(file, true);
+								fw1.write(text);
+								fw1.close();
+							}catch (Exception e1) {
+								e1.printStackTrace();
+							}
 							JOptionPane.showMessageDialog(getContentPane(),
 									"정상적으로 결제되었습니다." + "\n" + "[결제금액]" + "\n" + sum + "원"
 							/* +"\n"+"[주문내역]\n" + pay_list.toString(),---> 구매내역 뽑아내는 부분 */
