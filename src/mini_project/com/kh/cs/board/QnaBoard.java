@@ -19,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import mini_project.com.kh.main.MainPage11;
+
 public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 
 //		전체화면 배경색   : .setBackground(new Color(160, 242, 196));
@@ -38,10 +40,11 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 
 	JTable table;
 	JScrollPane scroll;
-	JPanel northp, southp, centerp;
+	JPanel northp, southp, centerp, topp;
 	JLabel label;
-	JButton bt_add, bt_del, bt_up, bt_search, bt_main, bt_qna, bt_complain, bt_check;
+	JButton bt_add, bt_del, bt_up, bt_search, bt_main, bt_qna, bt_complain, bt_check, bt_mainhome;
 
+	MainPage11 mainhome;
 	DefaultTableModel dtm;
 	QnaBoard qna;
 	ComplainBoard complain;
@@ -91,21 +94,33 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 		table.getColumn("비밀번호").setMinWidth(0);
 		table.getColumn("비밀번호").setMaxWidth(0);
 
+		
+		topp = new JPanel();
+		topp.setBounds(0, 0, 1334, 65);
+		topp.setBackground(null);
+		
 		northp = new JPanel();
-		northp.setBounds(0, 0, 1334, 65);
+		northp.setBounds(0, 76, 1334, 65);
 		northp.setBackground(null);
 
 		centerp = new JPanel();
-		centerp.setBounds(597, 87, 140, 33);
+		centerp.setBounds(598, 151, 140, 33);
 		centerp.setBackground(null);
 
 		scroll = new JScrollPane(table);
-		scroll.setBounds(230, 204, 874, 549);
+		scroll.setBounds(230, 228, 874, 525);
 
 		southp = new JPanel();
 		southp.setBounds(0, 796, 1334, 65);
 		southp.setBackground(null);
 
+		
+		
+		bt_mainhome = new JButton("메인홈");
+		bt_mainhome.setFont(new Font("NotoSansCJKkr-Black.otf", Font.BOLD, 30));
+		bt_mainhome.setBorderPainted(false);
+		bt_mainhome.setBackground((Color) null);
+		
 		bt_main = new JButton("공지사항");
 		bt_main.setFont(new Font("NotoSansCJKkr-Black.otf", Font.BOLD, 30));
 		bt_main.setBackground(null);
@@ -162,11 +177,17 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 //		     southp.add(bt_search);
 
 		getContentPane().setLayout(null);
+		
+		
+		getContentPane().add(topp);
 		getContentPane().add(northp);
 		getContentPane().add(centerp);
 		getContentPane().add(scroll);
 		getContentPane().add(southp);
 
+		
+		topp.add(bt_mainhome);
+		
 		northp.add(bt_main);
 		northp.add(bt_qna);
 		northp.add(bt_complain);
@@ -187,6 +208,7 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 	private void eventUp() {
 		table.addMouseListener(this);
 
+		bt_mainhome.addActionListener(this);
 		bt_main.addActionListener(this);
 		bt_qna.addActionListener(this);
 		bt_complain.addActionListener(this);
@@ -212,11 +234,19 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 
 				Object ob = e.getSource();
 
-				// 메인 버튼 클릭시
-				if (ob == bt_main) {
-//					main = new MainBoard();
+				// 메인홈 버튼 클릭시
+				if (ob == bt_mainhome) {
+					mainhome = new MainPage11();
 					setVisible(false);
-					setVisible(true);
+					mainhome.setVisible(true);
+					
+				}	
+				
+				// 공지사항 버튼 클릭시
+				else if (ob == bt_main) {
+					main = new MainBoard();
+					setVisible(false);
+					main.setVisible(true);
 
 				}
 
@@ -258,7 +288,7 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 					String title = (String) table.getValueAt(srow, 1);
 					String writer = (String) table.getValueAt(srow, 2);
 					String content = (String) table.getValueAt(srow, 3);
-					String password = (String) table.getValueAt(srow, 4);
+//					String password = (String) table.getValueAt(srow, 4);
 					
 	
 					form.tf_number.setText(number);
@@ -295,7 +325,7 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 					String title = (String) table.getValueAt(srow, 1);
 					String writer = (String) table.getValueAt(srow, 2);
 					String content = (String) table.getValueAt(srow, 3);
-					String password = (String) table.getValueAt(srow, 4);
+//					String password = (String) table.getValueAt(srow, 4);
 
 					form.tf_number.setText(number);
 					form.tf_title.setText(title);
@@ -453,7 +483,7 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 
 					
 					if (form.getTitle().equals("게시글 작성")) {// 게시글 작성이었을때
-						Object rowData[] = { number, title, writer, content/*, password */};
+						Object rowData[] = { number, title, writer, content/*, password*/ };
 						dtm.addRow(rowData);
 
 //						try {
@@ -532,45 +562,41 @@ public class QnaBoard extends JFrame implements MouseListener, ActionListener {
 				    
 				 }
 				 
-				 
+*/				 
 					
-					 public static void main(String[] args) { new MainBoard();
-					  
-					  }
-*/
-	}
 				
-				 @Override
-				 public void mousePressed(MouseEvent e) {
-				  // TODO Auto-generated method stub
-				  
-				 }
-
-				 @Override
-				 public void mouseReleased(MouseEvent e) {
-				  // TODO Auto-generated method stub
-				  
-				 }
-
-				 @Override
-				 public void mouseEntered(MouseEvent e) {
-				  // TODO Auto-generated method stub
-				  
-				 }
-
-				 @Override
-				 public void mouseExited(MouseEvent e) {
-				  // TODO Auto-generated method stub
-				  
-				 }
-
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
+				
 				
 				
 			}
 
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
