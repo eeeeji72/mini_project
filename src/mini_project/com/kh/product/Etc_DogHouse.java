@@ -517,22 +517,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
 					}
 
-					// 구매내역 관련-------------------------------------------------------
-					String info[] = new String[3]; // 한행 (row) 에 저장할 데이터 모음
-					info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
-					info[1] = "1";
-					if (hsize.getSelectedItem().toString().equals("소형견 용")) {
-						info[2] = Integer.toString(p);
-					} else if (hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
-						info[2] = Integer.toString(p1);
-					} else {
-						info[2] = Integer.toString(p2);
-					}
-					pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + ", 가격 : " + info[2]
-							+ "원 / "); // 결제 금액 리스트에 추가
-					proN_list.add(ptitle);
-					proO_list.add(info[0]);
-
 					int rowCont = table.getRowCount();
 					int sum = 0;
 					for (int i = 0; i < rowCont; i++) {
@@ -553,6 +537,21 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 						int qut_data = JOptionPane.showConfirmDialog(getContentPane(), "주문을 결제하시겠습니까?", "주문 진행",
 								JOptionPane.YES_NO_CANCEL_OPTION);
 						if (qut_data == 0) { // [예] 버튼
+							// 구매내역 관련-------------------------------------------------------
+							String info[] = new String[3]; // 한행 (row) 에 저장할 데이터 모음
+							info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
+							info[1] = "1";
+							if (hsize.getSelectedItem().toString().equals("소형견 용")) {
+								info[2] = Integer.toString(p);
+							} else if (hsize.getSelectedItem().toString().equals("중형견 용 (+5000원)")) {
+								info[2] = Integer.toString(p1);
+							} else {
+								info[2] = Integer.toString(p2);
+							}
+							pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + ", 가격 : "
+									+ info[2] + "원"); // 결제 금액 리스트에 추가
+							proN_list.add(ptitle);
+							proO_list.add(info[0]);
 							System.out.println(pay_list.toString());
 							String text = pay_list.toString();
 							String fileN = "buy_list.txt";
