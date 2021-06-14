@@ -81,37 +81,55 @@ public class ProductReviewList extends JDialog {
 		scrollPane.setBounds(963, 0, 19, 458);
 		contentPanel.add(scrollPane);
 		
-		
 		try {
-			FileReader fr = new FileReader("productName_list.txt");
-			BufferedReader br = new BufferedReader(fr);
-			String productName = "";
-			while ((productName = br.readLine()) != null) {
-				// 버튼 1 구현
-					JButton btnNewButton = new JButton("상품명 : " + productName);
-					btnNewButton.setForeground(Color.WHITE);
-					btnNewButton.setBackground(Color.DARK_GRAY);
-					btnNewButton.setFont(new Font("NotoSansCJKr", Font.PLAIN, 20));
-					btnNewButton.setBounds(199, 32, 568, 99);
-					btnNewButton.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							// TODO Auto-generated method stub
-							super.mouseClicked(e);
-							ProductReview proReviewdialog = new ProductReview();
-							proReviewdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-							proReviewdialog.setVisible(true);
-						}
-					});
-					contentPanel.add(btnNewButton);
-			}if(fr != null) fr.close();
+	         FileReader fr = new FileReader("starPoint.txt");
+	         BufferedReader br = new BufferedReader(fr);
+	         String SPData = "";
+	         while ((SPData = br.readLine()) != null) {
+	            try {
+	               FileReader fr1 = new FileReader("productName_list.txt");
+	               BufferedReader br1 = new BufferedReader(fr1);
+	               String productName = "";
+	               while ((productName = br1.readLine()) != null) {
+	                  // 버튼 1 구현
+	                  JButton btnNewButton = new JButton("상품명 : " + productName);
+	                  btnNewButton.setForeground(Color.WHITE);
+	                  btnNewButton.setBackground(Color.DARK_GRAY);
+	                  btnNewButton.setFont(new Font("NotoSansCJKr", Font.PLAIN, 20));
+	                  btnNewButton.setBounds(199, 32, 568, 99);
+	                  btnNewButton.addMouseListener(new MouseAdapter() {
+	                     @Override
+	                     public void mouseClicked(MouseEvent e) {
+	                        // TODO Auto-generated method stub
+	                        super.mouseClicked(e);
+	                        ProductReview proReviewdialog = new ProductReview();
+	                        proReviewdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	                        proReviewdialog.setVisible(true);
+	                     }
+	                  });
+	                  contentPanel.add(btnNewButton);
+	               }
+	               if (fr1 != null)
+	                  fr1.close();
+	      
+	            } catch (FileNotFoundException e) {
+	               JOptionPane.showMessageDialog(null, "작성할 수 있는 후기가 없습니다.", "", JOptionPane.ERROR_MESSAGE);
+	            } catch (IOException e) {
+	               // TODO Auto-generated catch block
+	               e.printStackTrace();
+	            }
+	         }
+	         if (fr != null)
+	            fr.close();
 
-		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null,"작성할 수 있는 후기가 없습니다.", "", JOptionPane.ERROR_MESSAGE);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	      } catch (FileNotFoundException e) {
+	         JOptionPane.showMessageDialog(null, "작성할 수 있는 후기가 없습니다.", "", JOptionPane.ERROR_MESSAGE);
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      
+		
 	}
 
 }
