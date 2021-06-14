@@ -110,7 +110,7 @@ public class CreatedList extends JDialog {
 			e.printStackTrace();
 		}
 	}
-			
+/*			
 	public void loadProduct() {
 		try {
 			FileReader fr = new FileReader("PA0000.txt");
@@ -134,5 +134,5 @@ public class CreatedList extends JDialog {
 			e.printStackTrace();
 		}	
 	}
-
+*/
 }

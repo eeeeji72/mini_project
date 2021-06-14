@@ -11,28 +11,46 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-public class Page11 extends JFrame {
 
+import mini_project.com.kh.main.MainPage11;
+import mini_project.com.kh.review.CreatedList;
+public class Page11 extends JFrame {
+//
 	private JPanel Mypage;
 
+	/**
+	 * Launch the application.
+	 */
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * EventQueue.invokeLater(new Runnable() {
+	 * 
+	 * public void run() {
+	 * 
+	 * try { Page frame = new Page(); frame.setVisible(true); } catch (Exception e)
+	 * { e.printStackTrace(); } } }); }
+	 * 
+	 * /** Create the frame.
+	 */
 	public Page11() {
 		setTitle("댕숲");
 		setVisible(true);
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -47,7 +65,6 @@ public class Page11 extends JFrame {
 		setContentPane(Mypage);
 		Mypage.setLayout(null);
 
-		
 		JButton btnNewButton_1 = new JButton("내 정보 수정\r\n");
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBackground(new Color(0, 153, 255));
@@ -89,6 +106,9 @@ public class Page11 extends JFrame {
 		btnNewButton_3.setBounds(614, 174, 197, 62);
 		btnNewButton_3.setFont(new Font("NotoSansCJKkr", Font.PLAIN, 20));
 		Mypage.add(btnNewButton_3);
+		
+		
+		
 
 		JLabel lblNewLabel = new JLabel("     마이 페이지");
 		lblNewLabel.setBounds(10, 26, 215, 75);
@@ -96,12 +116,23 @@ public class Page11 extends JFrame {
 		Font usef1 = new Font("NotoSansCJKkr", Font.PLAIN, 20);
 		lblNewLabel.setFont(usef1);
 
-		ImageIcon im = new ImageIcon("img/best.PNG");
-		JLabel lblNewLabel_1 = new JLabel(im);
-		//lblNewLabel_1.setIcon(new ImageIcon("img/best.PNG"));
-		
-		lblNewLabel_1.setBounds(30, 159, 457, 555);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\eto_inu_kataguruma-removebg-preview.png"));
+		lblNewLabel_1.setBounds(31, 185, 457, 555);
 		Mypage.add(lblNewLabel_1);
+		
+		JButton btnNewButton_6 = new JButton("메인 홈");
+		btnNewButton_6.setForeground(Color.WHITE);
+		btnNewButton_6.setBackground(new Color(0, 153, 255));
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				setVisible(false);
+			}
+		});
+		btnNewButton_6.setBounds(565, 10, 199, 48);
+		Mypage.add(btnNewButton_6);
+		//setVisible(true);
 	}
 
 	private JPanel contentPane;
@@ -112,11 +143,20 @@ public class Page11 extends JFrame {
 	private JLabel lblNewLabel1;
 	private Component label;
 
+	/**
+	 * Launch the application.
+	 */
+
+	/**
+	 * Create the frame.
+	 * 
+	 * @return
+	 */
 	public void modify() {
 
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -167,7 +207,8 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton9 = new JButton("뒤로");
-
+		btnNewButton9.setBackground(Color.DARK_GRAY);
+		btnNewButton9.setForeground(Color.WHITE);
 		btnNewButton9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Page1();
@@ -176,8 +217,9 @@ public class Page11 extends JFrame {
 		btnNewButton9.setBounds(12, 10, 97, 23);
 		contentPane.add(btnNewButton9);
 
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img/bath_r.PNG"));
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\bath_r-removebg-preview.png"));
+		//lblNewLabel.setIcon(new ImageIcon("img/bath_r.PNG"));
 		lblNewLabel.setBounds(12, 131, 402, 471);
 		contentPane.add(lblNewLabel);
 	}
@@ -185,7 +227,8 @@ public class Page11 extends JFrame {
 	public void Inquire() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -196,7 +239,8 @@ public class Page11 extends JFrame {
 		setBounds(100, 100, 1250, 880);
 		JFrame a = new JFrame("마이 페이지");
 		Color b = new Color(160, 242, 196);
-		ImageIcon img = new ImageIcon("img/d.PNG");
+		ImageIcon img = new ImageIcon("file:///C:/Workspace1/JAVA/MyPage/allergy_dog.png");
+		//ImageIcon img = new ImageIcon("img/d.PNG");
 
 		contentPane = new JPanel();
 		contentPane.setBackground(b);
@@ -213,7 +257,10 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				review();
+			
+				CreatedList dialog = new CreatedList();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
 			}
 		});
 
@@ -261,11 +308,13 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton_8);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("img/dname.PNG"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dname-removebg-preview.png"));
 		lblNewLabel_1.setBounds(765, 185, 438, 488);
 		contentPane.add(lblNewLabel_1);
 
 		JButton btnNewButton_9 = new JButton("뒤로");
+		btnNewButton_9.setBackground(Color.DARK_GRAY);
+		btnNewButton_9.setForeground(Color.WHITE);
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Page1();
@@ -279,7 +328,8 @@ public class Page11 extends JFrame {
 	public void review() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -299,7 +349,7 @@ public class Page11 extends JFrame {
 		btnNewButton.setFont(new Font("NotoSansCJKkr", Font.PLAIN, 20));
 
 		JButton btnNewButton_1 = new JButton("리뷰 2 :");
-		File wFile = new File("buy_list.txt");
+		
 		btnNewButton_1.setBounds(659, 229, 177, 38);
 		contentPane.add(btnNewButton_1);
 		Font usef2 = new Font("NotoSansCJKkr", Font.PLAIN, 20);
@@ -342,6 +392,8 @@ public class Page11 extends JFrame {
 		contentPane.add(chckbxNewCheckBox_3);
 
 		JButton btnNewButton9 = new JButton("뒤로");
+		btnNewButton9.setForeground(Color.WHITE);
+		btnNewButton9.setBackground(Color.DARK_GRAY);
 		btnNewButton9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inquire();
@@ -351,7 +403,7 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton9);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("img/best.PNG"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\gum-removebg-preview.png"));
 		lblNewLabel_1.setBounds(42, 168, 428, 422);
 		contentPane.add(lblNewLabel_1);
 	}
@@ -359,7 +411,8 @@ public class Page11 extends JFrame {
 	public void buy() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -379,9 +432,11 @@ public class Page11 extends JFrame {
 					BufferedReader bufReader = new BufferedReader(f2);
 			String RTData1 = "";
 			while((RTData1 = bufReader.readLine()) != null) {
-				JLabel buyList = new JLabel( RTData1);
+				JTextArea buyList = new JTextArea( RTData1);
+				
 				buyList.setFont(new Font("NotoSansCJKkr", Font.PLAIN, 20));
 				buyList.setBounds(401, 106, 800, 300);
+				buyList.setEditable(false);
 				contentPane.add(buyList);
 			}
 			if(f2 != null)f2.close();
@@ -401,6 +456,8 @@ public class Page11 extends JFrame {
 		lblNewLabel2.setFont(usef2);
 
 		JButton btnNewButton9 = new JButton("뒤로");
+		btnNewButton9.setBackground(Color.DARK_GRAY);
+		btnNewButton9.setForeground(Color.WHITE);
 		btnNewButton9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inquire();
@@ -410,12 +467,14 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton9);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img/dogmedi.PNG"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dogmedi-removebg-preview.png"));
+		//lblNewLabel.setIcon(new ImageIcon("img/dogmedi.PNG"));
 		lblNewLabel.setBounds(12, 65, 367, 347);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("img/dname.PNG"));
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dname-removebg-preview.png"));
+		//lblNewLabel_1.setIcon(new ImageIcon("img/dname.PNG"));
 		lblNewLabel_1.setBounds(895, 356, 314, 397);
 		contentPane.add(lblNewLabel_1);
 	}
@@ -425,7 +484,8 @@ public class Page11 extends JFrame {
 	public void remove() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -457,18 +517,18 @@ public class Page11 extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 
-		textField_2 = new JTextField();
-		textField_2.setText("탈퇴 사유 : ");
-		textField_2.setBounds(553, 443, 205, 58);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
 		
-
+	
+		
 		JButton btnNewButton = new JButton("회원탈퇴");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(0, 153, 255));
 		btnNewButton.setBounds(591, 785, 167, 46);
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton1 = new JButton("뒤로");
+		btnNewButton1.setBackground(Color.DARK_GRAY);
+		btnNewButton1.setForeground(Color.WHITE);
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Page1();
@@ -478,7 +538,7 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton1);
 
 		JLabel lblNewLabel1 = new JLabel("");
-		lblNewLabel1.setIcon(new ImageIcon("img/sf.PNG"));
+		lblNewLabel1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\c-removebg-preview.png"));
 		lblNewLabel1.setBounds(94, 104, 376, 532);
 		contentPane.add(lblNewLabel1);
 	}
@@ -486,7 +546,8 @@ public class Page11 extends JFrame {
 	public void Page1() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -541,6 +602,19 @@ public class Page11 extends JFrame {
 		btnNewButton_3.setBounds(614, 174, 197, 69);
 		btnNewButton_3.setFont(new Font("NotoSansCJKkr", Font.PLAIN, 20));
 		Mypage.add(btnNewButton_3);
+		
+		
+		JButton btnNewButton_6 = new JButton("메인 홈");
+		btnNewButton_6.setForeground(Color.WHITE);
+		btnNewButton_6.setBackground(new Color(0, 153, 255));
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				setVisible(false);
+			}
+		});
+		btnNewButton_6.setBounds(565, 10, 199, 48);
+		Mypage.add(btnNewButton_6);
 
 		JLabel lblNewLabel = new JLabel("     마이 페이지");
 		lblNewLabel.setBounds(10, 26, 215, 75);
@@ -549,14 +623,13 @@ public class Page11 extends JFrame {
 		lblNewLabel.setFont(usef1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("img/best.PNG"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\eto_inu_kataguruma-removebg-preview.png"));
 		lblNewLabel_1.setBounds(31, 185, 457, 555);
 		Mypage.add(lblNewLabel_1);
 	}
-	/*
+//;
 	public static void main(String[] args) {
 
 		new Page11();
-	}*/
+	}
 }
-
