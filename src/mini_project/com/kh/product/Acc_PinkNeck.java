@@ -417,7 +417,8 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 		DefaultTableModel model = new DefaultTableModel(title, 0);
 		JTable table = new JTable(model);
 		ArrayList pay_list = new ArrayList(); // 결제 금액 관련 리스트 선언
-
+		ArrayList proN_list = new ArrayList(); // 결제된 상품명
+		ArrayList proO_list = new ArrayList(); // 결제된 상품 옵션명
 		table.setRowHeight(40);
 		table.setPreferredScrollableViewportSize(new Dimension(500, 50));
 		table.setFillsViewportHeight(true);
@@ -507,20 +508,6 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
 					}
 
-					// 구매내역 관련-------------------------------------------------------
-					String info[] = new String[3]; // 한행 (row) 에 저장할 데이터 모음
-					info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
-					info[1] = "1";
-					if (hsize.getSelectedItem().toString().equals("1세트")) {
-						info[2] = Integer.toString(p);
-					} else if (hsize.getSelectedItem().toString().equals("2세트")) {
-						info[2] = Integer.toString(p1);
-					} else {
-						info[2] = Integer.toString(p2);
-					}
-					pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + " : " + info[2]
-							+ "원 / "); // 결제 금액 리스트에 추가
-
 					int rowCont = table.getRowCount();
 					int sum = 0;
 					for (int i = 0; i < rowCont; i++) {
@@ -541,14 +528,54 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 						int qut_data = JOptionPane.showConfirmDialog(getContentPane(), "주문을 결제하시겠습니까?", "주문 진행",
 								JOptionPane.YES_NO_CANCEL_OPTION);
 						if (qut_data == 0) { // [예] 버튼
+
+							// 구매내역 관련-------------------------------------------------------
+							String info[] = new String[3]; // 한행 (row) 에 저장할 데이터 모음
+							info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
+							info[1] = "1";
+							if (hsize.getSelectedItem().toString().equals("1세트")) {
+								info[2] = Integer.toString(p);
+							} else if (hsize.getSelectedItem().toString().equals("2세트")) {
+								info[2] = Integer.toString(p1);
+							} else {
+								info[2] = Integer.toString(p2);
+							}
+							pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + " : "
+									+ info[2] + "원 / "); // 결제 금액 리스트에 추가
+							proN_list.add(ptitle);
+							proO_list.add(info[0]);
 							System.out.println(pay_list.toString());
 							String text = pay_list.toString();
 							String fileN = "buy_list.txt";
+
+							String text1 = proN_list.toString(); // 상품명 리스트
+							String proN = "productName_list.txt";
+
+							String text2 = proO_list.toString(); // 상품 옵션 리스트
+							String proO = "productOption_list.txt";
 							try {
-								File file = new File(fileN);
+								File file = new File(fileN); // 구매내역
+								File file1 = new File(proN); // 구매한 상품명
+								File file2 = new File(proO); // 구매한 상품 옵션
+								if (!file.exists()) {
+									file.createNewFile();
+									file1.createNewFile();
+									file2.createNewFile();
+								}
 								FileWriter fw1 = new FileWriter(file, true);
+								FileWriter fw2 = new FileWriter(file1, true);
+								FileWriter fw3 = new FileWriter(file2, true);
 								fw1.write(text);
+								fw1.write("\r\n");
 								fw1.close();
+
+								fw2.write(text1);
+								fw2.write("\r\n");
+								fw2.close();
+
+								fw3.write(text2);
+								fw3.write("\r\n");
+								fw3.close();
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
@@ -557,9 +584,7 @@ public class Acc_PinkNeck extends JFrame implements MouseListener {
 							/* +"\n"+"[주문내역]\n" + pay_list.toString(),---> 구매내역 뽑아내는 부분 */
 							, "결제 완료", JOptionPane.INFORMATION_MESSAGE);
 						} else if (qut_data == 1) { // [아니오] 버튼
-
 						} else if (qut_data == 2) { // [취소] 버튼
-
 						}
 
 					} else { // 테이블에 값 없으면 뜨지 않도록

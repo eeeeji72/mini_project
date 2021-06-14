@@ -248,5 +248,27 @@ public class ProductReview extends JDialog {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		// 댓글 카운트
+	      try {
+	         FileReader fr = new FileReader("coment.txt");
+	         BufferedReader bufReader = new BufferedReader(fr);
+	         int num = 0;
+	         for (int i = 1; bufReader.readLine() != null; i++) {
+	            num = i;
+	         }
+	         JLabel comentCountLabel = new JLabel(num + "개의 댓글이 있습니다.");
+	         comentCountLabel.setFont(new Font("NotoSansCJKr", Font.PLAIN, 20));
+	         comentCountLabel.setBounds(35, 407, 302, 33);
+	         reviewTextPanel.add(comentCountLabel);
+
+	         if (fr != null)
+	            fr.close();
+	      } catch (FileNotFoundException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
 	}
 }
