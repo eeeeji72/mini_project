@@ -371,8 +371,6 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 
 		// 제품 선택-콤보박스
 		String dsize[] = { "소형견 용", "중형견 용 (+5000원)", "대형견 용 (+10000원)" };
-		// int [] productprice = {Integer.parseInt(pprice), 26000, 31000};
-		// Integer.parseInt(pprice)
 		int p = Integer.parseInt(pprice);
 		int p1 = Integer.parseInt(pprice) + 5000;
 		int p2 = Integer.parseInt(pprice) + 10000;
@@ -590,25 +588,18 @@ public class Etc_DogHouse extends JFrame implements MouseListener {
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
-
 							JOptionPane.showMessageDialog(getContentPane(),
 									"정상적으로 결제되었습니다." + "\n" + "[결제금액]" + "\n" + sum + "원"
 							/* +"\n"+"[주문내역]\n" + pay_list.toString(),---> 구매내역 뽑아내는 부분 */
 							, "결제 완료", JOptionPane.INFORMATION_MESSAGE);
-
 						} else if (qut_data == 1) { // [아니오] 버튼
-
 						} else if (qut_data == 2) { // [취소] 버튼
-
 						}
-
 					} else { // 테이블에 값 없으면 뜨지 않도록
-
 					}
 				} else if (e.getActionCommand().equals("선택 삭제")) { // 삭제 버튼 클릭이벤트 처리
 					// 선택한 줄(row)의 번호 알아내기
 					int rowIndex = table.getSelectedRow();
-
 					// 선택 안하고 누를 경우 리턴값 -1
 					if (rowIndex == -1) {
 						return;
