@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import mini_project.com.kh.cs.board.MainBoard;
+import mini_project.com.kh.login.MemberJoin;
+import mini_project.com.kh.login.MemberLogin;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.product.ProductMain;
 import mini_project.com.kh.product.Snack_Gum;
@@ -118,14 +120,33 @@ public class MainPage11 extends JFrame{
 		btnNewButton_4.setForeground(Color.WHITE);
 		btnNewButton_4.setFont(btn);
 		contentPane.add(btnNewButton_4);
-
+		btnNewButton_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MemberLogin ml = new MemberLogin();
+				ml.setVisible(true);
+				setVisible(false); 
+			}
+		});
 		JButton btnNewButton_5 = new JButton("회원가입");
 		btnNewButton_5.setBounds(1225, 10, 97, 23);
 		btnNewButton_5.setBackground(new Color(0, 153, 255));
 		btnNewButton_5.setForeground(Color.WHITE);
 		btnNewButton_5.setFont(btn);
 		contentPane.add(btnNewButton_5);
-
+		btnNewButton_5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MemberJoin mj = new MemberJoin();
+				//mj.setVisible(true);
+				setVisible(false); 
+			}
+		});
+		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("img/d.PNG"));
 		lblNewLabel.setBounds(417, 242, 402, 372);
