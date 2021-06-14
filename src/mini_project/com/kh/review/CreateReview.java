@@ -46,7 +46,6 @@ public class CreateReview extends JDialog {
 //			e.printStackTrace();
 //		}
 //	}
-	
 
 	/**
 	 * Create the dialog.
