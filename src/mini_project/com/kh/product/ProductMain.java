@@ -27,26 +27,32 @@ import mini_project.com.kh.product.ProductList_Etc;
 import mini_project.com.kh.product.ProductList_Snack;
 import mini_project.com.kh.product.ProductList_Toy;
 import mini_project.com.kh.product.ProductMain;
+import mini_project.com.kh.review.ReviewMain;
 
 public class ProductMain extends JFrame implements MouseListener {
 	public ProductMain() {
-
 		JMenuBar menuBar = new JMenuBar(); // 메뉴바 생성
 
 		// 메뉴 생성
 		JMenu categ = new JMenu("카테고리");
 		JMenu my = new JMenu("내 정보");
 		JMenu cen = new JMenu("고객센터");
+		JMenu main = new JMenu("메인페이지");
+		JMenu review = new JMenu("상품후기");
 
 		// 폰트, 크기 적용
 		Font ft = new Font("NotoSansCJKkr", Font.BOLD, 13);
 		categ.setFont(ft);
 		my.setFont(ft);
 		cen.setFont(ft);
+		main.setFont(ft);
+		review.setFont(ft);
 
 		menuBar.add(categ);
 		menuBar.add(my);
 		menuBar.add(cen);
+		menuBar.add(main);
+		menuBar.add(review);
 
 		// 서브메뉴-카테고리
 		JMenuItem menuItem = null;
@@ -139,7 +145,7 @@ public class ProductMain extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Page11();
-				System.out.println("[ 상품 홈 -> 마이페이지]");
+				System.out.println("[-> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
@@ -151,9 +157,34 @@ public class ProductMain extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 고객센터 적어야
 				new MainBoard();
-				System.out.println("[ 상품 홈 -> 고객센터]");
+				System.out.println("[-> 고객센터]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("메인 페이지");
+		menuItem.addActionListener(menuItemListener);
+		main.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				System.out.println("[-> 메인페이지]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("상품후기");
+		menuItem.addActionListener(menuItemListener);
+		review.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ReviewMain();
+				System.out.println("[-> 상품후기]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
@@ -176,14 +207,14 @@ public class ProductMain extends JFrame implements MouseListener {
 		getContentPane().add(button4);
 		// getContentPane().add(button5);
 
-		//마우스 우클릭하면 이전화면인 메인화면으로 이동하게
+		// 마우스 우클릭하면 이전화면인 메인화면으로 이동하게
 		button.addMouseListener(this);
 		button1.addMouseListener(this);
 		button2.addMouseListener(this);
 		button3.addMouseListener(this);
 		button4.addMouseListener(this);
 		addMouseListener(this);
-		
+
 		// 상품 메인&버튼 색
 		button.setBackground(new Color(160, 242, 196));
 		button1.setBackground(new Color(160, 242, 196));
@@ -277,12 +308,9 @@ public class ProductMain extends JFrame implements MouseListener {
 	};
 
 	/*
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("환영합니다. 댕댕이의 숲 상품 홈입니다. 즐거운 쇼핑 되세요");
-		new ProductMain();
-	}
-*/
+	 * public static void main(String[] args) { // TODO Auto-generated method stub
+	 * System.out.println("환영합니다. 댕댕이의 숲 상품 홈입니다. 즐거운 쇼핑 되세요"); new ProductMain(); }
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub

@@ -39,8 +39,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.cs.board.MainBoard;
+import mini_project.com.kh.main.MainPage11;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.review.ProductReviewList;
+import mini_project.com.kh.review.ReviewMain;
 
 public class Snack_Food extends JFrame implements MouseListener {
 	private JTable table;
@@ -49,12 +51,11 @@ public class Snack_Food extends JFrame implements MouseListener {
 	private File dir;
 	private String filePath;
 	ArrayList<String> pFiles = new ArrayList<String>();
-	
-	
+
 	String ptitle;
 	String pprice;
 	String pinfo;
-	
+
 	void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
@@ -62,75 +63,79 @@ public class Snack_Food extends JFrame implements MouseListener {
 	public Snack_Food() {
 		// TODO Auto-generated constructor stub
 		// File Open
-        File wFile = new File("PB0129.txt");
-       
-        // File Reader를 위한 객체 생성
-        FileReader frd = null;
-        BufferedReader brd = null;
+		File wFile = new File("PB0129.txt");
 
-        // 내용 저장을 위한 ArrayList 정의
-        ArrayList<String> lineList = new ArrayList<String>();
+		// File Reader를 위한 객체 생성
+		FileReader frd = null;
+		BufferedReader brd = null;
 
-        // 라인 단위 저장 및 카운트를 위한 변수 정의
-        String rLine = null;
-        int lineNum = 0;
-        boolean hasMore = true;
-     
-        try {
-              frd = new FileReader(wFile);
-              brd = new BufferedReader(frd);                                      
+		// 내용 저장을 위한 ArrayList 정의
+		ArrayList<String> lineList = new ArrayList<String>();
 
-              while (hasMore) {
-                     if((rLine = brd.readLine())!= null){
-                          // ArrayList에 읽은 라인 추가
-                         lineList.add(rLine);
-                         lineNum++;
-                         hasMore = true;
-                     } else
-                        hasMore = false;                       
-              }
-              frd.close();
-              brd.close();
-        } catch (IOException e) {
-              e.printStackTrace();
-        }           
+		// 라인 단위 저장 및 카운트를 위한 변수 정의
+		String rLine = null;
+		int lineNum = 0;
+		boolean hasMore = true;
 
-       
+		try {
+			frd = new FileReader(wFile);
+			brd = new BufferedReader(frd);
 
-        // 라인단위 출력(for loop)
-        lineNum = lineList.size();
+			while (hasMore) {
+				if ((rLine = brd.readLine()) != null) {
+					// ArrayList에 읽은 라인 추가
+					lineList.add(rLine);
+					lineNum++;
+					hasMore = true;
+				} else
+					hasMore = false;
+			}
+			frd.close();
+			brd.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        ptitle = lineList.get(2);
-        System.out.println("ptitle : " + ptitle);
-        pprice = lineList.get(3);
-        System.out.println("pprice : " + pprice);
-        pinfo = lineList.get(5);
-        System.out.println("pinfo : " + pinfo);
-		
-        JMenuBar menuBar = new JMenuBar(); //메뉴바 생성
+		// 라인단위 출력(for loop)
+		lineNum = lineList.size();
 
-		 //메뉴 생성
+		ptitle = lineList.get(2);
+		System.out.println("ptitle : " + ptitle);
+		pprice = lineList.get(3);
+		System.out.println("pprice : " + pprice);
+		pinfo = lineList.get(5);
+		System.out.println("pinfo : " + pinfo);
+
+		JMenuBar menuBar = new JMenuBar(); // 메뉴바 생성
+
+		// 메뉴 생성
 		JMenu categ = new JMenu("카테고리");
-		JMenu my = new JMenu("내 정보");		
-		JMenu cen = new JMenu("고객센터");	
-		
+		JMenu my = new JMenu("내 정보");
+		JMenu cen = new JMenu("고객센터");
+		JMenu main = new JMenu("메인페이지");
+		JMenu review = new JMenu("상품후기");
+
 		// 폰트, 크기 적용
 		Font ft = new Font("NotoSansCJKkr", Font.BOLD, 13);
 		categ.setFont(ft);
 		my.setFont(ft);
 		cen.setFont(ft);
-		
+		main.setFont(ft);
+		review.setFont(ft);
+
 		menuBar.add(categ);
 		menuBar.add(my);
 		menuBar.add(cen);
-		
-		//서브메뉴-카테고리
+		menuBar.add(main);
+		menuBar.add(review);
+
+		// 서브메뉴-카테고리
 		JMenuItem menuItem = null;
 
 		menuItem = new JMenuItem("상품 홈");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -138,13 +143,13 @@ public class Snack_Food extends JFrame implements MouseListener {
 				System.out.println("[ -> 상품 홈]");
 				setVisible(false); // 창 안보이게 하기
 			}
-		});		
+		});
 		categ.addSeparator();
 
 		menuItem = new JMenuItem("장난감");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -152,91 +157,114 @@ public class Snack_Food extends JFrame implements MouseListener {
 				System.out.println("[ -> 장난감 카테고리]");
 				setVisible(false); // 창 안보이게 하기
 			}
-		});	
-		
+		});
+
 		menuItem = new JMenuItem("의류");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new ProductList_Clo();
-			System.out.println("[ -> 의류 카테고리]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductList_Clo();
+				System.out.println("[ -> 의류 카테고리]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-				
+		});
+
 		menuItem = new JMenuItem("간식");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new ProductList_Snack();
-			System.out.println("[ -> 간식 카테고리]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductList_Snack();
+				System.out.println("[ -> 간식 카테고리]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-						
-				
+		});
+
 		menuItem = new JMenuItem("액세서리");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new ProductList_Acc();
-			System.out.println("[ -> 액세서리 카테고리]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductList_Acc();
+				System.out.println("[ -> 액세서리 카테고리]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});						
-				
+		});
+
 		menuItem = new JMenuItem("기타");
 		menuItem.addActionListener(menuItemListener);
 		categ.add(menuItem);
-		//클릭시 이동
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new ProductList_Etc();
-			System.out.println("[ -> 기타 카테고리]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProductList_Etc();
+				System.out.println("[ -> 기타 카테고리]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});		
+		});
 
-		//서브메뉴-마이페이지, 고객센터
+		// 서브메뉴-마이페이지, 고객센터
 		menuItem = new JMenuItem("마이페이지");
 		menuItem.addActionListener(menuItemListener);
-		my.add(menuItem);	
-		//클릭시 이동
+		my.add(menuItem);
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new Page11();
-			System.out.println("[ 상품 홈 -> 마이페이지]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Page11();
+				System.out.println("[-> 마이페이지]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-		
+		});
+
 		menuItem = new JMenuItem("고객센터");
 		menuItem.addActionListener(menuItemListener);
-		cen.add(menuItem);	
-		//클릭시 이동
+		cen.add(menuItem);
+		// 클릭시 이동
 		menuItem.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			//고객센터 적어야
-			new MainBoard();
-			System.out.println("[ 상품 홈 -> 고객센터]");
-			setVisible(false); // 창 안보이게 하기
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainBoard();
+				System.out.println("[-> 고객센터]");
+				setVisible(false); // 창 안보이게 하기
 			}
-		});		
-		
-		
-		//JFrame에 메뉴바 설정
+		});
+
+		menuItem = new JMenuItem("메인 페이지");
+		menuItem.addActionListener(menuItemListener);
+		main.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				System.out.println("[-> 메인페이지]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("상품후기");
+		menuItem.addActionListener(menuItemListener);
+		review.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ReviewMain();
+				System.out.println("[-> 상품후기]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		// JFrame에 메뉴바 설정
 		setJMenuBar(menuBar);
 
 		// 이름, 이미지
@@ -309,7 +337,7 @@ public class Snack_Food extends JFrame implements MouseListener {
 		panel_6.setLayout(gbl_panel_6);
 
 		// 상품명------------------------------------------------------------
-		JLabel lblNewLabel = new JLabel("["+lineList.get(1)+"] "+ptitle);
+		JLabel lblNewLabel = new JLabel("[" + lineList.get(1) + "] " + ptitle);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 2;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -347,10 +375,10 @@ public class Snack_Food extends JFrame implements MouseListener {
 		// 제품 선택-콤보박스------------------------------------------------------------
 		String dsize[] = { "10kg", "20kg", "30kg" };
 		int p = Integer.parseInt(pprice);
-		int p1 = Integer.parseInt(pprice)*2;
-		int p2 = Integer.parseInt(pprice)*3;
-		int [] productprice = {p, p1, p2};
-		//int[] productprice = { 39800, 79600, 119400 };
+		int p1 = Integer.parseInt(pprice) * 2;
+		int p2 = Integer.parseInt(pprice) * 3;
+		int[] productprice = { p, p1, p2 };
+		// int[] productprice = { 39800, 79600, 119400 };
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -400,8 +428,8 @@ public class Snack_Food extends JFrame implements MouseListener {
 		DefaultTableModel model = new DefaultTableModel(title, 0);
 		JTable table = new JTable(model);
 		ArrayList pay_list = new ArrayList(); // 결제 금액 관련 리스트 선언
-		ArrayList proN_list = new ArrayList();	//결제된 상품명
-		ArrayList proO_list = new ArrayList();	//결제된 상품 옵션명
+		ArrayList proN_list = new ArrayList(); // 결제된 상품명
+		ArrayList proO_list = new ArrayList(); // 결제된 상품 옵션명
 
 		table.setRowHeight(40);
 		table.setPreferredScrollableViewportSize(new Dimension(500, 50));
@@ -463,7 +491,7 @@ public class Snack_Food extends JFrame implements MouseListener {
 		pay_btn.setForeground(Color.WHITE);
 		panel_2.add(pay_btn);
 		pay_btn.setFont(btn);
-		
+
 		// 장바구니 버튼
 		JButton btnNewButton = new JButton("장바구니 담기");
 		btnNewButton.setBackground(new Color(0, 153, 255));
@@ -491,11 +519,11 @@ public class Snack_Food extends JFrame implements MouseListener {
 					} else {
 						m.addRow(new Object[] { hsize.getSelectedItem().toString(), count, productprice[2] });
 					}
-					
-					//구매내역 관련-------------------------------------------------------
-					String info[] = new String[3]; //한행 (row) 에 저장할 데이터 모음
-					info[0] = hsize.getSelectedItem().toString(); //콤보박스 값을 가져온다
-					info[1] = "1";				
+
+					// 구매내역 관련-------------------------------------------------------
+					String info[] = new String[3]; // 한행 (row) 에 저장할 데이터 모음
+					info[0] = hsize.getSelectedItem().toString(); // 콤보박스 값을 가져온다
+					info[1] = "1";
 					if (hsize.getSelectedItem().toString().equals("10kg")) {
 						info[2] = Integer.toString(p);
 					} else if (hsize.getSelectedItem().toString().equals("20kg")) {
@@ -503,11 +531,11 @@ public class Snack_Food extends JFrame implements MouseListener {
 					} else {
 						info[2] = Integer.toString(p2);
 					}
-					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
+					pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + " : " + info[2]
+							+ "원 / "); // 결제 금액 리스트에 추가
 					proN_list.add(ptitle);
 					proO_list.add(info[0]);
-					
-					
+
 					int rowCont = table.getRowCount();
 					int sum = 0;
 					for (int i = 0; i < rowCont; i++) {
@@ -531,17 +559,17 @@ public class Snack_Food extends JFrame implements MouseListener {
 							System.out.println(pay_list.toString());
 							String text = pay_list.toString();
 							String fileN = "buy_list.txt";
-							
-							String text1 = proN_list.toString();	//상품명 리스트
+
+							String text1 = proN_list.toString(); // 상품명 리스트
 							String proN = "productName_list.txt";
-							
-							String text2 = proO_list.toString();	//상품 옵션 리스트
+
+							String text2 = proO_list.toString(); // 상품 옵션 리스트
 							String proO = "productOption_list.txt";
 							try {
-								File file = new File(fileN);	//구매내역
-								File file1 = new File(proN);	//구매한 상품명
-								File file2 = new File(proO);	//구매한 상품 옵션
-								if(!file.exists()) {
+								File file = new File(fileN); // 구매내역
+								File file1 = new File(proN); // 구매한 상품명
+								File file2 = new File(proO); // 구매한 상품 옵션
+								if (!file.exists()) {
 									file.createNewFile();
 									file1.createNewFile();
 									file2.createNewFile();
@@ -552,21 +580,21 @@ public class Snack_Food extends JFrame implements MouseListener {
 								fw1.write(text);
 								fw1.write("\r\n");
 								fw1.close();
-								
+
 								fw2.write(text1);
 								fw2.write("\r\n");
 								fw2.close();
-								
+
 								fw3.write(text2);
 								fw3.write("\r\n");
 								fw3.close();
-							}catch (Exception e1) {
+							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
 							JOptionPane.showMessageDialog(getContentPane(),
-									"정상적으로 결제되었습니다." + "\n" + "[결제금액]" + "\n" + sum+ "원"
-									/*+"\n"+"[주문내역]\n" + pay_list.toString(),---> 구매내역 뽑아내는 부분*/
-									,"결제 완료", JOptionPane.INFORMATION_MESSAGE);
+									"정상적으로 결제되었습니다." + "\n" + "[결제금액]" + "\n" + sum + "원"
+							/* +"\n"+"[주문내역]\n" + pay_list.toString(),---> 구매내역 뽑아내는 부분 */
+							, "결제 완료", JOptionPane.INFORMATION_MESSAGE);
 						} else if (qut_data == 1) { // [아니오] 버튼
 
 						} else if (qut_data == 2) { // [취소] 버튼

@@ -21,6 +21,7 @@ import mini_project.com.kh.cs.board.MainBoard;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.product.ProductMain;
 import mini_project.com.kh.product.Snack_Gum;
+import mini_project.com.kh.review.ReviewMain;
 
 public class MainPage11 extends JFrame{
 
@@ -61,6 +62,14 @@ public class MainPage11 extends JFrame{
 	
 
 		JButton btnNewButton_1 = new JButton("상품후기");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ReviewMain();
+				System.out.println("[ -> 상품후기]");
+				setVisible(false); // 창 안보이게 하기
+
+			}
+		});
 		btnNewButton_1.setBounds(473, 91, 110, 37);
 		btnNewButton_1.setBackground(new Color(0, 153, 255));
 		btnNewButton_1.setForeground(Color.WHITE);
