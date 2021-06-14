@@ -202,7 +202,7 @@ public class ProductList_Acc extends JFrame implements MouseListener {
 
 		// GridBagLayout 설정
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 450, 450, 450, 450, 0 };
+		gbl_panel.columnWidths = new int[] { 215, 222, 214, -5, 0 };
 		gbl_panel.rowHeights = new int[] { 300, 300, 300, 300 };
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
