@@ -11,7 +11,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -40,8 +39,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.cs.board.MainBoard;
+import mini_project.com.kh.main.MainPage11;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.review.CreatedList;
+import mini_project.com.kh.review.ReviewMain;
 
 public class Clo_T extends JFrame implements MouseListener {
 	private JTable table;
@@ -111,16 +112,22 @@ public class Clo_T extends JFrame implements MouseListener {
 		JMenu categ = new JMenu("카테고리");
 		JMenu my = new JMenu("내 정보");
 		JMenu cen = new JMenu("고객센터");
+		JMenu main = new JMenu("메인페이지");
+		JMenu review = new JMenu("상품후기");
 
 		// 폰트, 크기 적용
 		Font ft = new Font("NotoSansCJKkr", Font.BOLD, 13);
 		categ.setFont(ft);
 		my.setFont(ft);
 		cen.setFont(ft);
+		main.setFont(ft);
+		review.setFont(ft);
 
 		menuBar.add(categ);
 		menuBar.add(my);
 		menuBar.add(cen);
+		menuBar.add(main);
+		menuBar.add(review);
 
 		// 서브메뉴-카테고리
 		JMenuItem menuItem = null;
@@ -213,7 +220,7 @@ public class Clo_T extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Page11();
-				System.out.println("[ 상품 홈 -> 마이페이지]");
+				System.out.println("[-> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
@@ -225,9 +232,34 @@ public class Clo_T extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 고객센터 적어야
 				new MainBoard();
-				System.out.println("[ 상품 홈 -> 고객센터]");
+				System.out.println("[-> 고객센터]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("메인 페이지");
+		menuItem.addActionListener(menuItemListener);
+		main.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				System.out.println("[-> 메인페이지]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("상품후기");
+		menuItem.addActionListener(menuItemListener);
+		review.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ReviewMain();
+				System.out.println("[-> 상품후기]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
@@ -343,9 +375,9 @@ public class Clo_T extends JFrame implements MouseListener {
 		// 제품 선택-콤보박스------------------------------------------------------------
 		String dsize[] = { "1벌", "2벌", "3벌" };
 		int p = Integer.parseInt(pprice);
-		int p1 = Integer.parseInt(pprice)*2;
-		int p2 = Integer.parseInt(pprice)*3;
-		int [] productprice = {p, p1, p2};
+		int p1 = Integer.parseInt(pprice) * 2;
+		int p2 = Integer.parseInt(pprice) * 3;
+		int[] productprice = { p, p1, p2 };
 		JComboBox hsize = new JComboBox(dsize);
 		GridBagConstraints gbc_hsize = new GridBagConstraints();
 		gbc_hsize.insets = new Insets(0, 0, 5, 5);
@@ -368,15 +400,15 @@ public class Clo_T extends JFrame implements MouseListener {
 		gbc_btnNewButton_2.gridy = 5;
 		btnNewButton_2.addActionListener(new ActionListener() {
 
-	         // 작성한 리뷰
-	         @Override
-	         public void actionPerformed(ActionEvent e) {
-	            CreatedList CLdialog = new CreatedList();
-	            CLdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	            CLdialog.setVisible(true);
+			// 작성한 리뷰
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CreatedList CLdialog = new CreatedList();
+				CLdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				CLdialog.setVisible(true);
 
-	         }
-	      });
+			}
+		});
 
 		panel_6.add(btnNewButton_2, gbc_btnNewButton_2);
 		// 폰트, 크기 적용
@@ -400,8 +432,8 @@ public class Clo_T extends JFrame implements MouseListener {
 		DefaultTableModel model = new DefaultTableModel(title, 0);
 		JTable table = new JTable(model);
 		ArrayList pay_list = new ArrayList(); // 결제 금액 관련 리스트 선언
-		ArrayList proN_list = new ArrayList();	//결제된 상품명
-		ArrayList proO_list = new ArrayList();	//결제된 상품 옵션명
+		ArrayList proN_list = new ArrayList(); // 결제된 상품명
+		ArrayList proO_list = new ArrayList(); // 결제된 상품 옵션명
 
 		table.setRowHeight(40);
 		table.setPreferredScrollableViewportSize(new Dimension(500, 50));
@@ -503,10 +535,11 @@ public class Clo_T extends JFrame implements MouseListener {
 					} else {
 						info[2] = Integer.toString(p2);
 					}
-					pay_list.add(ptitle + hsize.getSelectedItem().toString()+ " => 수량 : " +  count + " : "+ info[2] + "원 / "); //결제 금액 리스트에 추가
+					pay_list.add(ptitle + hsize.getSelectedItem().toString() + " => 수량 : " + count + " : " + info[2]
+							+ "원 / "); // 결제 금액 리스트에 추가
 					proN_list.add(ptitle);
 					proO_list.add(info[0]);
-					
+
 					int rowCont = table.getRowCount();
 					int sum = 0;
 					for (int i = 0; i < rowCont; i++) {
@@ -530,17 +563,17 @@ public class Clo_T extends JFrame implements MouseListener {
 							System.out.println(pay_list.toString());
 							String text = pay_list.toString();
 							String fileN = "buy_list.txt";
-							
-							String text1 = proN_list.toString();	//상품명 리스트
+
+							String text1 = proN_list.toString(); // 상품명 리스트
 							String proN = "productName_list.txt";
-							
-							String text2 = proO_list.toString();	//상품 옵션 리스트
+
+							String text2 = proO_list.toString(); // 상품 옵션 리스트
 							String proO = "productOption_list.txt";
 							try {
-								File file = new File(fileN);	//구매내역
-								File file1 = new File(proN);	//구매한 상품명
-								File file2 = new File(proO);	//구매한 상품 옵션
-								if(!file.exists()) {
+								File file = new File(fileN); // 구매내역
+								File file1 = new File(proN); // 구매한 상품명
+								File file2 = new File(proO); // 구매한 상품 옵션
+								if (!file.exists()) {
 									file.createNewFile();
 									file1.createNewFile();
 									file2.createNewFile();
@@ -551,15 +584,15 @@ public class Clo_T extends JFrame implements MouseListener {
 								fw1.write(text);
 								fw1.write("\r\n");
 								fw1.close();
-								
+
 								fw2.write(text1);
 								fw2.write("\r\n");
 								fw2.close();
-								
+
 								fw3.write(text2);
 								fw3.write("\r\n");
 								fw3.close();
-							}catch (Exception e1) {
+							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
 							JOptionPane.showMessageDialog(getContentPane(),

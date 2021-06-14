@@ -49,14 +49,6 @@ public class CreatedReview extends JDialog {
 	 * Create the dialog.
 	 */
 	public CreatedReview() {
-		runCreatedReview();
-	}
-	public CreatedReview(String starPoint, String reviewText) {
-		cr.setStarPoint(starPoint);
-		cr.setReviewText(reviewText);
-		runCreatedReview();
-	}
-	public void runCreatedReview() {
 		setBounds(100, 100, 1350, 600);
 		contentPanel.setLayout(null);
 		contentPanel.setBackground(new Color(160, 242, 196));
@@ -90,7 +82,7 @@ public class CreatedReview extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				super.mouseClicked(e);
-				ReviewDetails detailsDialog = new ReviewDetails(cr.getStarPoint(),cr.getReviewText());
+				ReviewDetails detailsDialog = new ReviewDetails();
 				detailsDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				detailsDialog.setVisible(true);
 			}

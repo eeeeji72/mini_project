@@ -38,7 +38,7 @@ public class CreatedList extends JDialog {
 //			e.printStackTrace();
 //		}
 //	}
-
+//
 	/**
 	 * Create the dialog.
 	 */

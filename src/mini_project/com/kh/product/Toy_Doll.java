@@ -38,8 +38,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import mini_project.com.kh.cs.board.MainBoard;
+import mini_project.com.kh.main.MainPage11;
 import mini_project.com.kh.my.Page11;
 import mini_project.com.kh.review.ProductReviewList;
+import mini_project.com.kh.review.ReviewMain;
 
 public class Toy_Doll extends JFrame implements MouseListener {
 	private JTable table;
@@ -109,16 +111,22 @@ public class Toy_Doll extends JFrame implements MouseListener {
 		JMenu categ = new JMenu("카테고리");
 		JMenu my = new JMenu("내 정보");
 		JMenu cen = new JMenu("고객센터");
+		JMenu main = new JMenu("메인페이지");
+		JMenu review = new JMenu("상품후기");
 
 		// 폰트, 크기 적용
 		Font ft = new Font("NotoSansCJKkr", Font.BOLD, 13);
 		categ.setFont(ft);
 		my.setFont(ft);
 		cen.setFont(ft);
+		main.setFont(ft);
+		review.setFont(ft);
 
 		menuBar.add(categ);
 		menuBar.add(my);
 		menuBar.add(cen);
+		menuBar.add(main);
+		menuBar.add(review);
 
 		// 서브메뉴-카테고리
 		JMenuItem menuItem = null;
@@ -211,7 +219,7 @@ public class Toy_Doll extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Page11();
-				System.out.println("[ 상품 홈 -> 마이페이지]");
+				System.out.println("[-> 마이페이지]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});
@@ -223,9 +231,34 @@ public class Toy_Doll extends JFrame implements MouseListener {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 고객센터 적어야
 				new MainBoard();
-				System.out.println("[ 상품 홈 -> 고객센터]");
+				System.out.println("[-> 고객센터]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("메인 페이지");
+		menuItem.addActionListener(menuItemListener);
+		main.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainPage11();
+				System.out.println("[-> 메인페이지]");
+				setVisible(false); // 창 안보이게 하기
+			}
+		});
+
+		menuItem = new JMenuItem("상품후기");
+		menuItem.addActionListener(menuItemListener);
+		review.add(menuItem);
+		// 클릭시 이동
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ReviewMain();
+				System.out.println("[-> 상품후기]");
 				setVisible(false); // 창 안보이게 하기
 			}
 		});

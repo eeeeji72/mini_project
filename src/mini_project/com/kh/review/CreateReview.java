@@ -51,10 +51,7 @@ public class CreateReview extends JDialog {
 	 * Create the dialog.
 	 */
 	public CreateReview() {
-		runCreateReview();
-		
-	}
-	public void runCreateReview() {
+
 		setBounds(100, 100, 445, 705);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(null);

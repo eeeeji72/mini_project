@@ -98,7 +98,7 @@ public class ProductReviewList extends JDialog {
 						public void mouseClicked(MouseEvent e) {
 							// TODO Auto-generated method stub
 							super.mouseClicked(e);
-							ProductPageReview proReviewdialog = new ProductPageReview();
+							ProductReview proReviewdialog = new ProductReview();
 							proReviewdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 							proReviewdialog.setVisible(true);
 						}
