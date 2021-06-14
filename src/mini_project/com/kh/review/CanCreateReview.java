@@ -42,7 +42,7 @@ public class CanCreateReview extends JDialog {
 //			e.printStackTrace();
 //		}
 //	}
-//
+
 	/**
 	 * Create the dialog.
 	 */

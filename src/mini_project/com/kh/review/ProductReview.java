@@ -46,7 +46,7 @@ public class ProductReview extends JDialog {
 //			e.printStackTrace();
 //		}
 //	}
-//
+
 	/**
 	 * Create the dialog.
 	 */

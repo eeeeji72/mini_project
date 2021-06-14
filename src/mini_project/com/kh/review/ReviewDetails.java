@@ -38,7 +38,7 @@ public class ReviewDetails extends JDialog {
 //			e.printStackTrace();
 //		}
 //	}
-//
+
 	/**
 	 * Create the dialog.
 	 */
