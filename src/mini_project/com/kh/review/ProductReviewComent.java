@@ -56,6 +56,15 @@ public class ProductReviewComent extends JDialog {
 		ImageIcon img = new ImageIcon("img/allergy_dog.png");
 		setIconImage(img.getImage());
 		setTitle("댕숲");
+		
+		// 상품사진
+		ImageIcon pImg = new ImageIcon("img/gum.png");
+		setIconImage(img.getImage());
+
+		// 리뷰 사진 라벨
+		JLabel lblNewLabel = new JLabel(pImg);
+		lblNewLabel.setBounds(14, 49, 434, 449);
+		contentPanel.add(lblNewLabel);
 
 		// 리뷰 텍스트 패널
 		JPanel reviewTextPanel = new JPanel();
