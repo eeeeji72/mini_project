@@ -66,8 +66,12 @@ public class ProductReview extends JDialog {
 		setIconImage(img.getImage());
 		setTitle("댕숲");
 		
-		//리뷰 사진 라벨
-		JLabel lblNewLabel = new JLabel((Icon) null);
+		// 상품사진
+		ImageIcon pImg = new ImageIcon("img/gum.png");
+		setIconImage(img.getImage());
+
+		// 리뷰 사진 라벨
+		JLabel lblNewLabel = new JLabel(pImg);
 		lblNewLabel.setBounds(14, 49, 434, 449);
 		contentPanel.add(lblNewLabel);
 		
