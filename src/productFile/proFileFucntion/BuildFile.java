@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import mini_project.com.kh.system_manager.vo.Product;
 //import mini_project.com.kh.system_manager.exceptions.OverLappedException;
 //import mini_project.com.kh.system_manager.vo.Product;
 import mini_project.com.kh.system_manager.vo.User;
@@ -18,7 +19,7 @@ public class BuildFile {
 
 	private static final String dirPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "productFile" + File.separator;
 
-	/*
+	
 	public void fileBuilder(Product p) {
 
 		File file = new File(p.getpCode() + ".txt");
@@ -40,7 +41,7 @@ public class BuildFile {
 			e.printStackTrace();
 		}
 	}
-	*/
+	
 	public void userFileBuilder(User u) {
 
 		File file = new File(u.getUserID() + ".txt");

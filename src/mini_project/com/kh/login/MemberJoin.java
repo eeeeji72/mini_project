@@ -27,7 +27,7 @@ public class MemberJoin extends JFrame {
 	User user;
 	
 	BuildFile buildFile = null;
-	private JFrame frame = null;
+	private JFrame frame;
 	
 	public MemberJoin() {
 		
@@ -148,7 +148,7 @@ public class MemberJoin extends JFrame {
 		
 		frame.setSize(1350, 900);
 		frame.add(container);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false); // 크기 고정
 		frame.setLocationRelativeTo(null); // 가운데 크기맞추기
 		frame.setVisible(true);
@@ -202,7 +202,7 @@ public class MemberJoin extends JFrame {
 				
 				}
 				new MainPage11();
-				dispose();
+				frame.dispose();
 			}
 		});
 		
@@ -212,7 +212,7 @@ public class MemberJoin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,"가입을 취소하였습니다.");
 				new MainPage11();
-				dispose();
+				frame.dispose();
 			}
 			
 		});

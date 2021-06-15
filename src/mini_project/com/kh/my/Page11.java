@@ -24,32 +24,31 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import mini_project.com.kh.login.MemberLogin;
 import mini_project.com.kh.main.MainPage11;
 import mini_project.com.kh.review.CreatedList;
+import mini_project.com.kh.system_manager.vo.User;
+import productFile.proFileFucntion.UserFileReader;
 public class Page11 extends JFrame {
 //
+	
+	private JTextField txtName , txtID  ,txtPassword ,txtAddress,txtPhone ,txtDogName;
 	private JPanel Mypage;
+	
+	private User user = null;
+	// User 클래스를 참조하여 새로운 user 객체변수를 생성
+	// 하지만 아직은 빈껍데기이다.
+	
+	String thisMember = new MemberLogin().getLogginedMember();
+	
+	// MemeberLogin 클래스에 getLogginedMemeber 를 통해 지금 접속중인 유저의 ID 값을
+	// thisMember 문자열에 담는다.
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * EventQueue.invokeLater(new Runnable() {
-	 * 
-	 * public void run() {
-	 * 
-	 * try { Page frame = new Page(); frame.setVisible(true); } catch (Exception e)
-	 * { e.printStackTrace(); } } }); }
-	 * 
-	 * /** Create the frame.
-	 */
 	public Page11() {
 		setTitle("댕숲");
 		setVisible(true);
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			setIconImage(ImageIO.read(new File("img/allergy_dog.png")));
 			//setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -117,7 +116,7 @@ public class Page11 extends JFrame {
 		lblNewLabel.setFont(usef1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\eto_inu_kataguruma-removebg-preview.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("img/best.png"));
 		lblNewLabel_1.setBounds(31, 185, 457, 555);
 		Mypage.add(lblNewLabel_1);
 		
@@ -156,7 +155,7 @@ public class Page11 extends JFrame {
 
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
+			setIconImage(ImageIO.read(new File("img/allergy_dog.png")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -199,6 +198,8 @@ public class Page11 extends JFrame {
 		textField_3.setBounds(542, 504, 196, 43);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		setTextField();
 
 		JButton btnNewButton = new JButton("정보 수정");
 		btnNewButton.setForeground(Color.WHITE);
@@ -218,8 +219,7 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton9);
 
 		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\bath_r-removebg-preview.png"));
-		//lblNewLabel.setIcon(new ImageIcon("img/bath_r.PNG"));
+		lblNewLabel.setIcon(new ImageIcon("img/bath_r.png"));
 		lblNewLabel.setBounds(12, 131, 402, 471);
 		contentPane.add(lblNewLabel);
 	}
@@ -227,8 +227,7 @@ public class Page11 extends JFrame {
 	public void Inquire() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
-			//setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("img/allergy_dog.png")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -239,7 +238,7 @@ public class Page11 extends JFrame {
 		setBounds(100, 100, 1250, 880);
 		JFrame a = new JFrame("마이 페이지");
 		Color b = new Color(160, 242, 196);
-		ImageIcon img = new ImageIcon("file:///C:/Workspace1/JAVA/MyPage/allergy_dog.png");
+		ImageIcon img = new ImageIcon("img/allergy_dog.png");
 		//ImageIcon img = new ImageIcon("img/d.PNG");
 
 		contentPane = new JPanel();
@@ -282,33 +281,32 @@ public class Page11 extends JFrame {
 		Font usef2 = new Font("NotoSansCJKkr", Font.PLAIN, 20);
 		lblNewLabel1.setFont(usef2);
 
-		JButton btnNewButton_3 = new JButton("아이디 : ");
+		txtID = new JTextField();
+		txtID.setBounds(401, 106, 201, 37);
+		contentPane.add(txtID);
 
-		btnNewButton_3.setBounds(401, 106, 201, 37);
-		contentPane.add(btnNewButton_3);
+		txtName = new JTextField();
+		txtName.setBounds(401, 229, 201, 44);
+		contentPane.add(txtName);
 
-		JButton btnNewButton_4 = new JButton("이름 :");
-		btnNewButton_4.setBounds(401, 229, 201, 44);
-		contentPane.add(btnNewButton_4);
+		txtPassword = new JTextField();
+		txtPassword.setBounds(401, 361, 203, 44);
+		contentPane.add(txtPassword);
 
-		JButton btnNewButton_5 = new JButton("닉네임 :");
-		btnNewButton_5.setBounds(401, 361, 203, 44);
-		contentPane.add(btnNewButton_5);
+		txtDogName = new JTextField();
+		txtDogName.setBounds(401, 483, 201, 44);
+		contentPane.add(txtDogName);
 
-		JButton btnNewButton_6 = new JButton("댕댕이 이름 : ");
-		btnNewButton_6.setBounds(401, 483, 201, 44);
-		contentPane.add(btnNewButton_6);
+		txtAddress = new JTextField();
+		txtAddress.setBounds(401, 604, 201, 44);
+		contentPane.add(txtAddress);
 
-		JButton btnNewButton_7 = new JButton("주소 :");
-		btnNewButton_7.setBounds(401, 604, 201, 44);
-		contentPane.add(btnNewButton_7);
-
-		JButton btnNewButton_8 = new JButton("전화 번호 :");
-		btnNewButton_8.setBounds(401, 725, 201, 44);
-		contentPane.add(btnNewButton_8);
+		txtPhone = new JTextField();
+		txtPhone.setBounds(401, 725, 201, 44);
+		contentPane.add(txtPhone);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dname-removebg-preview.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("img/dname.png"));
 		lblNewLabel_1.setBounds(765, 185, 438, 488);
 		contentPane.add(lblNewLabel_1);
 
@@ -324,12 +322,11 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton_9);
 
 	}
-
+/*
 	public void review() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
-			//setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -407,12 +404,11 @@ public class Page11 extends JFrame {
 		lblNewLabel_1.setBounds(42, 168, 428, 422);
 		contentPane.add(lblNewLabel_1);
 	}
-
+*/
 	public void buy() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
-			//setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -467,14 +463,12 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton9);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dogmedi-removebg-preview.png"));
-		//lblNewLabel.setIcon(new ImageIcon("img/dogmedi.PNG"));
+		lblNewLabel.setIcon(new ImageIcon("img/dogmedi.PNG"));
 		lblNewLabel.setBounds(12, 65, 367, 347);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\dname-removebg-preview.png"));
-		//lblNewLabel_1.setIcon(new ImageIcon("img/dname.PNG"));
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("img/dname.PNG"));
 		lblNewLabel_1.setBounds(895, 356, 314, 397);
 		contentPane.add(lblNewLabel_1);
 	}
@@ -484,8 +478,7 @@ public class Page11 extends JFrame {
 	public void remove() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
-			//setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -538,7 +531,7 @@ public class Page11 extends JFrame {
 		contentPane.add(btnNewButton1);
 
 		JLabel lblNewLabel1 = new JLabel("");
-		lblNewLabel1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\c-removebg-preview.png"));
+		lblNewLabel1.setIcon(new ImageIcon("img/sf.png"));
 		lblNewLabel1.setBounds(94, 104, 376, 532);
 		contentPane.add(lblNewLabel1);
 	}
@@ -546,8 +539,7 @@ public class Page11 extends JFrame {
 	public void Page1() {
 		setTitle("댕숲");
 		try {
-			setIconImage(ImageIO.read(new File("C:/Workspace1/JAVA/MyPage/allergy_dog.png")));
-			//setIconImage(ImageIO.read(new File("img/d.PNG")));
+			setIconImage(ImageIO.read(new File("img/d.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -623,13 +615,32 @@ public class Page11 extends JFrame {
 		lblNewLabel.setFont(usef1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\h9898\\Desktop\\eto_inu_kataguruma-removebg-preview.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("img/best.png"));
 		lblNewLabel_1.setBounds(31, 185, 457, 555);
 		Mypage.add(lblNewLabel_1);
 	}
 //;
+	
+	void setTextField() {
+		
+	user = new UserFileReader().fileToUser(thisMember);
+	System.out.println(user.getAddress());
+	// UserFileReader 클래스에 있는 fileToUser 메소드를 불러와서 사용한다. 
+	// 해당 메소드가 멤버ID 값을 통해 유저의 파일을 찾아내고 이 파일을 user 객체로 변환해준다.
+	// 그리고 그 객체를 위에서 만들어둔 user 객체 변수에 담아낸다.
+	// 즉 멤버아이디로 유저를 만들기
+	
+	txtName.setText(user.getName());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 이름 값을 받아와 txtName 에 표시
+	txtID.setText(user.getUserID());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 아이디 값을 받아와 txtID 에 표시
+	txtPassword.setText(user.getUserPassword());   // User 클래스로부터 참조하여 새로만든 user 객체로 부터 비밀번호를 받아와 txtPassword 에 표시
+	txtPhone.setText(user.getPhone());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 연락처을 받아와 txtPhone 에 표시
+	txtAddress.setText(user.getAddress());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 주소를 받아와 txtAddress 에 표시
+	txtID.setText(user.getUserID());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 반려견이름 받아와 txtDogName 에 표시
+	}
+	/*
 	public static void main(String[] args) {
 
 		new Page11();
 	}
+	*/
 }

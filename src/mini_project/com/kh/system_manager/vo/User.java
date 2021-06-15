@@ -102,7 +102,6 @@ public class User {
 		File[] dir = file.listFiles();
 		
 		for(File f : dir) {
-			System.out.println(f.getName());
 			if (f.getName().equals(userName+".txt")) {
 				isDuplicated = true;
 			}

@@ -43,7 +43,6 @@ public class MainPage11 extends JFrame{
 
 		// 폰트, 크기 적용
 		Font btn = new Font("NotoSansCJKkr", Font.PLAIN, 13);
-	
 		
 		JButton btnNewButton = new JButton("상품 홈\r\n");
 		btnNewButton.setBounds(149, 91, 110, 37);

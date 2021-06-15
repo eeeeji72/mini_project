@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import mini_project.com.kh.main.MainPage11;
+import mini_project.com.kh.system_manager.view.Manager_MainMenu;
 import mini_project.com.kh.system_manager.vo.User;
 import productFile.proFileFucntion.UserFileReader;
 
@@ -38,7 +39,7 @@ public class MemberLogin extends JFrame {// 로그인화면
 	private TextField txtID = null;
 	private TextField txtPassword = null;
 	
-	private String LogginedMember = null; // 로그인 한 유저의 파일명을 담을 문자열;
+	private static String LogginedMember; // 로그인 한 유저의 파일명을 담을 문자열;
 
 	public MemberLogin() {
 		JPanel p = new JPanel();
@@ -131,12 +132,21 @@ public class MemberLogin extends JFrame {// 로그인화면
 
 				String sMember = txtID.getText();
 				String memberpw = txtPassword.getText();
+				
 				if (checkMember(sMember, memberpw)) {
-
+					
+					setLogginedMember(sMember);
+					if(sMember.equals("admin")) {
+						JOptionPane.showMessageDialog(null, "관리자 접속입니다.");
+						new Manager_MainMenu();
+						dispose();
+					}
+					
+					else {
 					JOptionPane.showMessageDialog(null, "어서오세요!" + sMember + "님!");
 					new MainPage11();
 					dispose();
-					
+					}
 				} else {
 					JOptionPane.showConfirmDialog(null,"로그인 실패.. 옳바른 아이디 또는 비밀번호가 아닙니다.");
 				}
@@ -165,6 +175,10 @@ public class MemberLogin extends JFrame {// 로그인화면
 
 	public String getLogginedMember() {
 		return LogginedMember;
+	}
+	
+	private void setLogginedMember(String LogginedMember) {
+		MemberLogin.LogginedMember = LogginedMember;
 	}
 	
 	public void setLogOut() {
