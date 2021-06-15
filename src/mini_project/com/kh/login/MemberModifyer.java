@@ -20,15 +20,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import mini_project.com.kh.system_manager.vo.User;
+import productFile.proFileFucntion.UserFileReader;
 
 @SuppressWarnings("serial")
 public class MemberModifyer extends JFrame {// 로그인 성공시
 	
 	// id password name phone address
 	
-	User user = new User();
+	private User user = null;
+	// User 클래스를 참조하여 새로운 user 객체변수를 생성
+	// 하지만 아직은 빈껍데기이다.
 	
 	String thisMember = new MemberLogin().getLogginedMember();
+	// MemeberLogin 클래스에 getLogginedMemeber 를 통해 지금 접속중인 유저의 ID 값을
+	// thisMember 문자열에 담는다.
 	
 	private JButton btnBack;
 	private JButton btnCommit;
@@ -137,7 +142,7 @@ public class MemberModifyer extends JFrame {// 로그인 성공시
 		txtPhone = new JTextField();
 		txtPhone.setBounds(569, 370, 189,30);
 		txtPhone.setColumns(10);
-		txtPhone.setText("아이씨진짜");
+		txtPhone.setText("");
 		p.add(txtPhone);
 		
 		txtAddress = new JTextField();
@@ -148,9 +153,10 @@ public class MemberModifyer extends JFrame {// 로그인 성공시
 		txtDogName = new JTextField();
 		txtDogName.setColumns(10);
 		txtDogName.setBounds(568,500,251,30);
-		txtDogName.setText("아이씨");
+		txtDogName.setText("");
 		p.add(txtDogName);
 		
+		setTextField();
 		
 		setSize(1345, 900);
 		setTitle("댕숲");
@@ -161,8 +167,26 @@ public class MemberModifyer extends JFrame {// 로그인 성공시
 		
 	}
 	
-	public void setTextField() {
+	public void setTextField() {  // 텍스트필드에 유저정보를 표시해주는 메소드
 		
+		user = new UserFileReader().fileToUser(thisMember);
+		// UserFileReader 클래스에 있는 fileToUser 메소드를 불러와서 사용한다. 
+		// 해당 메소드가 멤버ID 값을 통해 유저의 파일을 찾아내고 이 파일을 user 객체로 변환해준다.
+		// 그리고 그 객체를 위에서 만들어둔 user 객체 변수에 담아낸다.
+		// 즉 멤버아이디로 유저를 만들기
+
+		txtName.setText(user.getName());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 이름 값을 받아와 txtName 에 표시
+		txtID.setText(user.getUserID());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 아이디 값을 받아와 txtID 에 표시
+		txtPassword.setText(user.getUserPassword());   // User 클래스로부터 참조하여 새로만든 user 객체로 부터 비밀번호를 받아와 txtPassword 에 표시
+		txtPhone.setText(user.getPhone());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 연락처을 받아와 txtPhone 에 표시
+		txtAddress.setText(user.getAddress());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 주소를 받아와 txtAddress 에 표시
+		txtID.setText(user.getUserID());  // User 클래스로부터 참조하여 새로만든 user 객체로 부터 반려견이름 받아와 txtDogName 에 표시
+		
+		// 실패 사유 : fileToUser 메소드가 오작동 하였다.
+		// 하지만 객체를 통해 정보값을 받아오는데 실패하였다.. 처음엔 null 값 그 다음엔 출처를 알 수 없는 잘못된 데이터를
+		// 긁어왔다.
+		
+		/*
 		File file = new File( thisMember + ".txt");
 		
 		BufferedReader br = null;
@@ -184,6 +208,7 @@ public class MemberModifyer extends JFrame {// 로그인 성공시
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 	

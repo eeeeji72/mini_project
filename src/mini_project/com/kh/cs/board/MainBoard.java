@@ -72,7 +72,7 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
 
 //			 JTable(Object[][] rowData, Object[] columnNames)
 
-		Object[][] rowData = { { 0, "TEST", "관리자", "", "" } };
+		Object[][] rowData = { { 0, "TEST", "관리자", "테스트", "테스트중" } };
 		Object[] columnNames = { "번호", "제목", "작성자", "작성내용", "비밀번호" };
 		// JTable(TableModel dm)
 		dtm = new DefaultTableModel(rowData, columnNames) {
